@@ -1,0 +1,25 @@
+.login-box {
+    position: fixed;
+    width: 400px;
+    left: calc(50% - 200px);
+    top: calc(50% - 181px);
+}
+.login-box .card .card-action{text-align: center;}
+.login-box .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating){
+    color:#007bff;
+    text-transform: none;
+    font-size: 14px;
+    margin-right: 0;
+}
+.mb-0{margin-bottom: 0;}
+.mt-0{margin-top:0;}
+
+@media screen and (max-width:400px){
+    .login-box{
+        max-width: 100%;
+        left: 0;
+    }
+    .login-box .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating){
+        font-size: 12px;
+    }
+}
