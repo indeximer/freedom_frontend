@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import {Row, Col, Card, Input, Button, Icon} from 'react-materialize';
-import logo from './img/logo.png';
+import logo from '../img/logo.png';
+import { withRouter, Link } from "react-router-dom";
 
 class Login extends Component {
+  handleLogin = (e) => {
+    e.preventDefault();
+    this.props.history.push('/techniques');
+  }
+
   render() {
     return (
       <div className="container">
         <Row className="mb-0">
           <Col className="login-box">
-            <Card className="grey lighten-4 mt-0 mb-0" actions={[<a href='cadastro'>Ainda não tem uma conta? Faça seu cadastro!</a>]}>
+            <Card className="grey lighten-4 mt-0 mb-0" actions={[<Link to='/register'>Ainda não tem uma conta? Faça seu cadastro!</Link>]}>
               <img src={logo} alt="Freedom RPG App"/>
               <Row className="mb-0">
                 <form className="form-login" id="form_login">
                   <Input s={12} label="Usuário" name="usuario" id="usuario" validate><Icon>account_circle</Icon></Input>
                   <Input s={12} label="Senha" name="senha" id="senha" type="password" validate><Icon>lock</Icon></Input>
                   <Col s={12}>
-                    <Button className="col s12" large>Entrar</Button>
+                    <Button onClick={(event) => this.handleLogin(event)} className="col s12 btn btn-large" large>Entrar</Button>
                   </Col>
                 </form>
               </Row>
@@ -27,4 +33,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
