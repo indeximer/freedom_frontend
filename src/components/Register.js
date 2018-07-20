@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 class Register extends Component {
   handleRegister = (e) => {
     e.preventDefault();
-    this.props.history.push('/list-techniques');
+    this.props.history.push('/techniques');
   }
 
   render() {
