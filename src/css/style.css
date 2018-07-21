@@ -48,6 +48,8 @@ button[data-activates="nav-mobile"] i{
 .mt-20{margin-top: 20px;}
 .mt-15{margin-top: 15px;}
 
+.mr-15{margin-right: 15px;}
+
 .p-0{padding: 0;}
 .px-0{
     padding-top:0;
@@ -137,9 +139,26 @@ label{font-size: 1rem;}
     text-align: center;
 }
 
+/* MENU */
+.side-nav li.active {
+    background-color: #009688;
+}
+.side-nav li.active a{color:#fff;}
+
+
 /* mobile */
 @media only screen and (max-width: 992px){
     footer, header, main {padding-left: 0;}
+}
+@media screen and (max-width:550px){
+    .card .card-content p.range-field {
+        margin-top: 25px;
+    }
+    .range-container .input-field{margin-top:0}
+    .range-container label {
+        margin-top: 20px;
+    }
+    .btn, .btn-large{padding: 0 1rem;}
 }
 @media screen and (max-width:400px){
     .login-box{

@@ -35,7 +35,7 @@ class RangeInput extends Component {
                     <input type="range" id={name} name={name} min={min} max={max} step={step} value={initialValue} />
                 </p>
             </Col>
-            <Input className="center-align" s={2} m={1} value={initialValue} disabled/>
+            <Input className="center-align" s={2} m={1} defaultValue={initialValue} disabled/>
         </div>
     );
   }

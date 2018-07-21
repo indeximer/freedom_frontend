@@ -3,6 +3,7 @@ import PageHeader from '../PageHeader';
 import PropTypes from 'prop-types';
 import {Section, Container, Row, Col, Card, Button, Input,Icon } from 'react-materialize';
 import RangeInput from '../RangeInput';
+import {Link} from 'react-router-dom';
 
 
 class AddTechniques extends Component {
@@ -55,6 +56,7 @@ class AddTechniques extends Component {
                         <Input s={12} type="textarea" id="description" name="description" label="Descrição da técnica (informe a restrição, se houver)"/>
                         
                         <Col s={12} className="right-align">
+                          <Link className="btn btn-large red darken-1 mr-15" to="/techniques">Cancelar</Link>
                           <Button large>Salvar<Icon left>save</Icon></Button>
                         </Col>
                       </Row>
