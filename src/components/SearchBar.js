@@ -2,7 +2,7 @@ import React from 'react';
 import {Section, Container, Card, Input} from 'react-materialize';
 import PropTypes from 'prop-types';
 
-SearchBar.PropTypes = {
+SearchBar.propTypes = {
     query: PropTypes.string.isRequired,
     onUpdateQuery: PropTypes.func.isRequired
 }

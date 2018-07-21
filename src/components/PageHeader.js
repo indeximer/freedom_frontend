@@ -2,7 +2,7 @@ import React from 'react';
 import {Section, Container} from 'react-materialize';
 import PropTypes from 'prop-types';
 
-PageHeader.PropTypes = {
+PageHeader.propTypes = {
     title: PropTypes.string.isRequired
 }
 

@@ -7,8 +7,9 @@ import SearchBar from '../SearchBar';
 import ColumnList from '../ColumnList';
 import ColumnListItem from '../ColumnListItem';
 
+
 class Index extends Component {
-    static PropTypes = {
+    static propTypes = {
       techniques : PropTypes.array.isRequired
     }
 
@@ -29,9 +30,6 @@ class Index extends Component {
       const {query}  = this.state;
 
       let showingTechniques = techniques;
-      let autocompleteTechniques = {};
-
-      techniques.map((technique) => autocompleteTechniques[technique.name] = null)
 
       if(query){
         const match = new RegExp(escapeRegEx(query),'i');
@@ -45,7 +43,7 @@ class Index extends Component {
 
       return (
         <main>
-          <PageHeader title="Techniques"/>
+          <PageHeader title="Técnicas"/>
 
           <SearchBar 
             query={query}

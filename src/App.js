@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import {Route} from 'react-router-dom';
-import Login from './components/Login';
-import Register from './components/Register';
+import Login from './components/User/Login';
+import Register from './components/User/Register';
 import Menu from './components/Menu';
 import ListTechniques from './components/Techniques/Index';
+import AddTechniques from './components/Techniques/Add';
 
 class App extends Component {
 
   state = {    
-  techniques : [
+    techniques : [
       {
         "id": "1",
         "name": "Bola de Fogo",
@@ -103,6 +104,9 @@ class App extends Component {
   };
 
   render() {
+
+    const {techniques} = this.state;
+
     return (
       <div>
         <Route exact path="/" render={() =>(
@@ -113,10 +117,17 @@ class App extends Component {
           <Register/>
         )}/>
 
-        <Route path="/techniques" render={() =>(
+        <Route exact path="/techniques" render={() =>(
           <div>
-            <Menu/>
-            <ListTechniques techniques={this.state.techniques} />
+            <Menu active="techniques"/>
+            <ListTechniques techniques={techniques} />
+          </div>
+        )}/>
+
+        <Route exact path="/techniques/add" render={() =>(
+          <div>
+            <Menu active="techniques-add"/>
+            <AddTechniques techniques={techniques} />
           </div>
         )}/>
       </div>      

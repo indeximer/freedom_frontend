@@ -1,9 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Button, SideNav, SideNavItem} from 'react-materialize';
+import PropTypes from 'prop-types';
 import logo from '../img/logo.png';
 
-class Menu extends Component {
-  render() {
+Menu.propTypes = {
+    active : PropTypes.string
+}
+
+function Menu(props){
+
+    const active = props.active;
+
     return (
         <SideNav
             id='nav-mobile'
@@ -13,17 +20,16 @@ class Menu extends Component {
         >
             <SideNavItem className="mt-20" subheader><img src={logo} alt="Freedom RPG App"/></SideNavItem>
             <SideNavItem divider />
-            <SideNavItem className="active" href='/ListaHabilidades'>Lista de Habilidades</SideNavItem>
-            <SideNavItem href='/CriarHabilidade'>Criar Habilidade</SideNavItem>
-            <SideNavItem href='/ListaPersonagens'>Lista de Personagens</SideNavItem>
-            <SideNavItem href='/CriarPersonagem'>Criar Personagem</SideNavItem>
+            <SideNavItem className={active === 'techniques' ? 'active':''} href='/techniques'>Lista de Técnicas</SideNavItem>
+            <SideNavItem className={active === 'techniques-add' ? 'active':''} href='/techniques/add'>Adicionar Técnicas</SideNavItem>
+            <SideNavItem className={active === 'characters' ? 'active':''} href='/characters'>Meus Personagens</SideNavItem>
+            <SideNavItem className={active === 'characters-add' ?'active':''} href='/characters/add'>Criar Personagem</SideNavItem>
             <SideNavItem divider />
             <SideNavItem subheader>Indeximer</SideNavItem>
             <SideNavItem href='/AlterarSenha' icon='lock'>Alterar senha</SideNavItem>
             <SideNavItem href='/Logout' icon='exit_to_app'>Sair</SideNavItem>
         </SideNav>
     );
-  }
 }
 
 export default Menu;

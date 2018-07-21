@@ -3,7 +3,7 @@ import {CardPanel, Badge, Button} from 'react-materialize';
 import PropTypes from 'prop-types';
 import If from './If';
 
-ColumnListItem.PropTypes = {
+ColumnListItem.propTypes = {
     item : PropTypes.object.isRequired,
     title : PropTypes.string.isRequired,
     subTitle : PropTypes.string,
