@@ -1,8 +1,8 @@
-.login-box {
-    position: fixed;
+.row .col.login-box {
     width: 400px;
     left: calc(50% - 200px);
-    top: 30px;
+    margin: 30px auto 0;
+    float: none;
 }
 .login-box .card .card-action{text-align: center;}
 .login-box .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating){

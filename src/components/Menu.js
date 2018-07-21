@@ -16,7 +16,7 @@ function Menu(props){
             id='nav-mobile'
             fixed
             trigger={<Button icon='menu' flat></Button>}
-            options={{ closeOnClick: true }}
+            options={{ closeOnClick: false }}
         >
             <SideNavItem className="mt-20" subheader><img src={logo} alt="Freedom RPG App"/></SideNavItem>
             <SideNavItem divider />
