@@ -10,20 +10,26 @@ class RangeInput extends Component {
     max : PropTypes.number.isRequired,
     min : PropTypes.number.isRequired,
     step : PropTypes.number.isRequired,
+    onSlide: PropTypes.func.isRequired
   }
 
   state = {
-    query:''
+    value:0
   }
 
-  updateQuery = (newQuery) => {
-      this.setState({query : newQuery });
+  componentDidMount(){
+    let initialValue = (this.props.min + this.props.max) / 2;
+    this.setState({value: initialValue});
+  }
+
+  updateValue = (event) => {
+      this.setState({value:event.target.value});
+      this.props.onSlide(parseInt(event.target.value,10), event.target.id)
   }
 
   render() {
     const {label, name, max, min, step} = this.props;
-
-    let initialValue = (min + max) / 2;
+    const value = this.state.value;
 
     return (
         <div className="range-container">
@@ -32,10 +38,25 @@ class RangeInput extends Component {
             </Col>
             <Col s={10} m={10}>
                 <p className="range-field">
-                    <input type="range" id={name} name={name} min={min} max={max} step={step} value={initialValue} />
+                    <input 
+                        type="range"
+                        id={name}
+                        name={name}
+                        min={min}
+                        max={max}
+                        step={step}
+                        value={value}
+                        onChange={(event) => this.updateValue(event)}
+                    />
                 </p>
             </Col>
-            <Input className="center-align" s={2} m={1} defaultValue={initialValue} disabled/>
+            <Input 
+                className="center-align"
+                s={2}
+                m={1}
+                value={value}
+                disabled
+            />
         </div>
     );
   }

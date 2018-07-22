@@ -13,11 +13,41 @@ class AddTechniques extends Component {
 
 
   state = {
-    query:''
+    query:'',
+    effect:0,
+    technique: {
+      name:'',
+      category:'',
+      effect:0,
+      form:0,
+      area:0,
+      duration:0,
+      execution:0,
+      restriction:0,
+      difficulty:0,
+      description:''
+    }
   }
 
-  updateQuery = (newQuery) => {
-      this.setState({query : newQuery });
+  coponentDidMount(){
+    this.updateDifficulty();
+  }
+
+  updateDifficulty = () =>{
+    const totalDifficulty = this.state.technique.effect + this.state.technique.form + this.state.technique.area + this.state.technique.duration + this.state.technique.execution + this.state.technique.restriction;
+    let technique = {...this.state.technique}
+    technique.difficulty = totalDifficulty;
+    this.setState({technique:technique});
+
+    console.log(this.state.technique)
+  }
+
+  onChangeSlider = (value, category) => {
+    let stateCopy = {...this.state}
+    stateCopy.technique[category] = value;
+    this.setState(stateCopy);
+
+    this.updateDifficulty();
   }
 
   render() {
@@ -36,20 +66,20 @@ class AddTechniques extends Component {
 
                         <Input s={12} m={6} type="text" id="category" name="category" label="Categoria Técnica"/>
 
-                        <RangeInput label="Efeito" name="effect" min={-12} max={12} step={3}  />
+                        <RangeInput label="Efeito" name="effect" min={-12} max={12} step={3} onSlide={this.onChangeSlider} />
 
-                        <RangeInput label="Forma" name="form" min={-12} max={12} step={3}  />
+                        <RangeInput label="Forma" name="form" min={-12} max={12} step={3} onSlide={this.onChangeSlider} />
 
-                        <RangeInput label="Area" name="area" min={-12} max={12} step={3}  />
+                        <RangeInput label="Area" name="area" min={-12} max={12} step={3} onSlide={this.onChangeSlider} />
 
-                        <RangeInput label="Duração" name="duration" min={-12} max={12} step={3}  />
+                        <RangeInput label="Duração" name="duration" min={-12} max={12} step={3} onSlide={this.onChangeSlider} />
 
-                        <RangeInput label="Execução" name="execution" min={-12} max={12} step={3}  />
+                        <RangeInput label="Execução" name="execution" min={-12} max={12} step={3} onSlide={this.onChangeSlider} />
 
-                        <RangeInput label="Restrição" name="Restriction" min={-12} max={12} step={3}  />
+                        <RangeInput label="Restrição" name="restriction" min={-12} max={12} step={3} onSlide={this.onChangeSlider} />
 
                         <div className="difficulty-field">
-                          <Input s={4} m={1} type="text" id="difficulty" name="difficulty" label="Dificuldade" defaultValue="0" disabled />
+                          <Input s={4} m={1} type="text" id="difficulty" name="difficulty" label="Dificuldade" value={this.state.technique.difficulty} disabled />
                         </div>
                         
 
