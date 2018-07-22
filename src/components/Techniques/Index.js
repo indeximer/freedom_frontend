@@ -55,7 +55,7 @@ class Index extends Component {
               <ColumnListItem
                 item={technique}
                 title={technique.name}
-                subtitle={technique.category}
+                subTitle={technique.category}
                 value={technique.difficulty}
               />
             )}
