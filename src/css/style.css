@@ -159,6 +159,20 @@ label{font-size: 1rem;}
         margin-top: 20px;
     }
     .btn, .btn-large{padding: 0 1rem;}
+
+    input[type=range]::-webkit-slider-thumb {
+        width:20px;
+        height: 20px;
+        margin-top:-8px; 
+    }
+    input[type=range]::-moz-range-thumb {
+        width:20px;
+        height: 20px;
+    }
+    input[type=range]::-ms-thumb {
+        width:20px;
+        height: 20px;
+    }
 }
 @media screen and (max-width:400px){
     .login-box{

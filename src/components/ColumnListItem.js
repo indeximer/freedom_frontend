@@ -11,14 +11,15 @@ ColumnListItem.propTypes = {
 }
 
 function ColumnListItem(props){
+    const tooltipped = props.item.description === undefined ? '' : "tooltipped";
     return(
         <li className="col s12 m6">
-            <CardPanel  className="teal">
+            <CardPanel  className={`teal hoverable ${tooltipped}`} data-position="top" data-tooltip={props.item.description}>
                 <span className="nome">
                     {props.title}<br/>
 
                     <If test={props.subTitle}>
-                        <span className="category">{props.subTitle}</span>
+                        <span className="category">{props.subTitle} {props.item.description}</span>
                     </If>
                 </span>
 

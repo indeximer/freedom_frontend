@@ -17,11 +17,6 @@ class RangeInput extends Component {
     value:0
   }
 
-  componentDidMount(){
-    let initialValue = (this.props.min + this.props.max) / 2;
-    this.setState({value: initialValue});
-  }
-
   updateValue = (event) => {
       this.setState({value:event.target.value});
       this.props.onSlide(parseInt(event.target.value,10), event.target.id)

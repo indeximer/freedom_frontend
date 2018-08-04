@@ -53,6 +53,7 @@ class Index extends Component {
           <ColumnList>
             {showingTechniques.map((technique) =>
               <ColumnListItem
+                key={technique.id}
                 item={technique}
                 title={technique.name}
                 subTitle={technique.category}

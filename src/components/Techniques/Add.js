@@ -38,8 +38,6 @@ class AddTechniques extends Component {
     let technique = {...this.state.technique}
     technique.difficulty = totalDifficulty;
     this.setState({technique:technique});
-
-    console.log(this.state.technique)
   }
 
   onChangeSlider = (value, category) => {
@@ -66,17 +64,17 @@ class AddTechniques extends Component {
 
                         <Input s={12} m={6} type="text" id="category" name="category" label="Categoria Técnica"/>
 
-                        <RangeInput label="Efeito" name="effect" min={-12} max={12} step={3} onSlide={this.onChangeSlider} />
+                        <RangeInput label="Efeito" name="effect" min={0} max={36} step={3} onSlide={this.onChangeSlider} />
 
-                        <RangeInput label="Forma" name="form" min={-12} max={12} step={3} onSlide={this.onChangeSlider} />
+                        <RangeInput label="Forma" name="form" min={0} max={12} step={3} onSlide={this.onChangeSlider} />
 
-                        <RangeInput label="Area" name="area" min={-12} max={12} step={3} onSlide={this.onChangeSlider} />
+                        <RangeInput label="Area" name="area" min={0} max={12} step={3} onSlide={this.onChangeSlider} />
 
-                        <RangeInput label="Duração" name="duration" min={-12} max={12} step={3} onSlide={this.onChangeSlider} />
+                        <RangeInput label="Duração" name="duration" min={0} max={15} step={3} onSlide={this.onChangeSlider} />
 
-                        <RangeInput label="Execução" name="execution" min={-12} max={12} step={3} onSlide={this.onChangeSlider} />
+                        <RangeInput label="Execução" name="execution" min={-12} max={6} step={3} onSlide={this.onChangeSlider} />
 
-                        <RangeInput label="Restrição" name="restriction" min={-12} max={12} step={3} onSlide={this.onChangeSlider} />
+                        <RangeInput label="Restrição" name="restriction" min={-6} max={0} step={3} onSlide={this.onChangeSlider} />
 
                         <div className="difficulty-field">
                           <Input s={4} m={1} type="text" id="difficulty" name="difficulty" label="Dificuldade" value={this.state.technique.difficulty} disabled />
