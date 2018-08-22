@@ -1,7 +1,7 @@
-const API = 'https://cryptic-brook-20874.herokuapp.com/api/techniques';
+const URL = 'https://cryptic-brook-20874.herokuapp.com/api/techniques';
 
 export const getAll = () => {
-    return fetch(API)
+    return fetch(URL)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => data)
 }
