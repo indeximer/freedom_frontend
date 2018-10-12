@@ -1,23 +1,17 @@
 import React from 'react';
 import {Button, SideNav, SideNavItem} from 'react-materialize';
 import PropTypes from 'prop-types';
-import logo from '../img/logo.png';
+import logo from '../../img/logo.png';
 
-Menu.propTypes = {
-    active : PropTypes.string
-}
-
-function Menu(props){
-
-    const active = props.active;
+const Menu = ({ active }) => {
 
     return (
         <SideNav
             id='nav-mobile'
             fixed
             trigger={<Button icon='menu' flat></Button>}
-            options={{ closeOnClick: false }}
-        >
+            options={{ closeOnClick: false }} >
+
             <SideNavItem className="mt-20" subheader><img src={logo} alt="Freedom RPG App"/></SideNavItem>
             <SideNavItem divider />
             <SideNavItem className={active === 'techniques' ? 'active':''} href='/techniques'>Lista de Técnicas</SideNavItem>
@@ -30,6 +24,10 @@ function Menu(props){
             <SideNavItem href='/Logout' icon='exit_to_app'>Sair</SideNavItem>
         </SideNav>
     );
+}
+
+Menu.propTypes = {
+    active : PropTypes.string
 }
 
 export default Menu;

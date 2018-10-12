@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import PageHeader from '../PageHeader';
 import PropTypes from 'prop-types';
+
+//components
+import Main from '../layout/Main'
 import {Section, Container, Row, Col, Card, Button, Input,Icon } from 'react-materialize';
-import RangeInput from '../RangeInput';
+import RangeInput from '../common/RangeInput';
 import {Link} from 'react-router-dom';
 
 
@@ -50,10 +52,9 @@ class AddTechniques extends Component {
 
   render() {
     return (
-      <main>
-        <PageHeader title="Adicionar Técninca"/>
 
-        <Section>
+      <Main active="techniques-add" pageTitle="Adicionar Técninca">
+          <Section>
             <Container>
               <Row>
                 <Col s={12}>
@@ -94,7 +95,8 @@ class AddTechniques extends Component {
               </Row>
             </Container>
         </Section>
-      </main>
+      </Main>
+
     );
   }
 }
