@@ -12,7 +12,7 @@ const Menu = ({ active }) => {
             trigger={<Button icon='menu' flat></Button>}
             options={{ closeOnClick: false }} >
 
-            <SideNavItem className="mt-20" subheader><img src={logo} alt="Freedom RPG App"/></SideNavItem>
+            <SideNavItem className="mt-20" href='/techniques'><img src={logo} alt="Freedom RPG App"/></SideNavItem>
             <SideNavItem divider />
             <SideNavItem className={active === 'techniques' ? 'active':''} href='/techniques'>Lista de Técnicas</SideNavItem>
             <SideNavItem className={active === 'techniques-add' ? 'active':''} href='/techniques/add'>Adicionar Técnicas</SideNavItem>
