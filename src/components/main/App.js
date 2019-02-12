@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import {Route} from 'react-router-dom'
-import Login from '../User/Login'
-import Register from '../User/Register'
-import ListTechniques from '../Techniques/Index'
-import AddTechniques from '../Techniques/Add'
+import { Route } from 'react-router-dom'
+import Login from '../../modules/User/Login'
+import Register from '../../modules/User/Register'
+import ListTechniques from '../../modules/Techniques/ListTechniques'
+import AddTechnique from '../../modules/Techniques/AddTechnique'
+import EditTechnique from '../../modules/Techniques/EditTechnique'
 
 class App extends Component {
 
@@ -24,7 +25,11 @@ class App extends Component {
         )}/>
 
         <Route exact path="/techniques/add" render={() =>(
-            <AddTechniques />
+            <AddTechnique />
+        )}/>
+
+        <Route exact path="/techniques/edit" render={() =>(
+            <EditTechnique />
         )}/>
       </div>      
     )

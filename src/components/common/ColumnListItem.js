@@ -19,7 +19,7 @@ function ColumnListItem(props){
                     {props.title}<br/>
 
                     <If test={props.subTitle}>
-                        <span className="category">{props.subTitle} {props.item.description}</span>
+                        <span className="category">{props.subTitle}</span>
                     </If>
                 </span>
 

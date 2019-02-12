@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { connect } from "react-redux"
 import escapeRegEx from 'escape-string-regexp'
 import sortBy from 'sort-by'
-import {getTechniquesAsync} from '../../redux/actions/techniquesActions'
+import { getTechniquesAsync } from '../../redux/actions/techniquesActions'
 
 //component
-import Main from '../layout/Main'
-import SearchBar from '../common/SearchBar'
-import ColumnList from '../common/ColumnList'
-import ColumnListItem from '../common/ColumnListItem'
+import { Section, Preloader } from 'react-materialize'
+import Main from '../../components/layout/Main'
+import SearchBar from '../../components/common/SearchBar'
+import ColumnList from '../../components/common/ColumnList'
+import ColumnListItem from '../../components/common/ColumnListItem'
 
 
 class Index extends Component {
@@ -18,7 +19,7 @@ class Index extends Component {
   }
 
   componentDidMount(){
-    this.props.dispatch(getTechniquesAsync());
+    this.props.dispatch(getTechniquesAsync())
   }
 
   updateQuery = (newQuery) => {
@@ -58,11 +59,17 @@ class Index extends Component {
               key={technique.id}
               item={technique}
               title={technique.name}
-              subTitle={technique.category}
+              subTitle={technique.skill.name}
               value={technique.difficulty}
             />
           )}
         </ColumnList>
+
+        <Section className='text-center'>
+          <Preloader flashing/>
+        </Section>
+
+        
       </Main>
     )
   }

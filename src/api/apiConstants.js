@@ -1,0 +1,1 @@
+export const apiUrl = 'https://cryptic-brook-20874.herokuapp.com/api'
