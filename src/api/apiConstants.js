@@ -1,1 +1,1 @@
-export const apiUrl = 'https://cryptic-brook-20874.herokuapp.com/api'
+export const apiUrl = 'https://freedomapi20190311090915.azurewebsites.net/api'
