@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import Main from '../../components/layout/Main'
 import TechniqueForm from './TechniqueForm'
 
-class AddTechnique extends Component {
+class EditTechnique extends Component {
 
   render() {
     return (
@@ -15,4 +15,4 @@ class AddTechnique extends Component {
   }
 }
   
-export default AddTechnique
+export default EditTechnique

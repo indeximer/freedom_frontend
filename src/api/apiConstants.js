@@ -1,1 +1,1 @@
-export const apiUrl = 'https://freedomapi20190311090915.azurewebsites.net/api'
+export const apiUrl = 'https://localhost:5001/api'

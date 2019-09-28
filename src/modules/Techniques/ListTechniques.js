@@ -59,7 +59,7 @@ class Index extends Component {
               key={technique.id}
               item={technique}
               title={technique.name}
-              subTitle={technique.skill.name}
+              subTitle={technique.skills.name}
               value={technique.difficulty}
             />
           )}

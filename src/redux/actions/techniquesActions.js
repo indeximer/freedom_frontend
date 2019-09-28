@@ -1,4 +1,4 @@
-import {RECEIVE_TECHNIQUES} from './actionTypes';
+import { RECEIVE_TECHNIQUES } from './actionTypes';
 import * as TechniquesAPI  from '../../api/TechniquesAPI';
 
 export const getTechniques = (techniques) => ({
