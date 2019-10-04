@@ -1,19 +1,49 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 //components
-import Menu from './Menu'
-import PageHeader from '../common/PageHeader'
+import { 
+    SimpleTopAppBar,
+    TopAppBarFixedAdjust,
+    Drawer,
+    DrawerContent,
+    List,
+    ListItem
+} from 'rmwc'
 
-const Main = ({ children, active, pageTitle }) => {
+//assets
+import logo from '../../assets/img/logo-white.png'
+
+const Main =  ({ children }) => {
+    const [open, setOpen] = React.useState(true);
+
     return(
-        <div>
-            <Menu active={active} />
-            <main>
-                <PageHeader title={pageTitle}/>
+        <div className="container-fluid">
+            <SimpleTopAppBar
+                title={<img src={logo} alt="Freedom Rpg" />}
+                fixed
+                navigationIcon={{ onClick: () => setOpen(!open) }}
+            />
+            <TopAppBarFixedAdjust />
+            <Drawer dismissible open={open} className="main-menu">
+                <DrawerContent>
+                    <List>
+                    <ListItem>Cookies</ListItem>
+                    <ListItem>Pizza</ListItem>
+                    <ListItem>Icecream</ListItem>
+                    </List>
+                </DrawerContent>
+            </Drawer>
+            <div className={`container ${ open ? 'menu-open' : null }`}>
                 {children}
-            </main>
+            </div>
         </div>
     )
+}
+
+Main.propTypes = {
+    children: PropTypes.any,
+    showSidebar: PropTypes.bool
 }
 
 export default Main

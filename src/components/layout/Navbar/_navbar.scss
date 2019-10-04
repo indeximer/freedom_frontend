@@ -1,0 +1,109 @@
+.navbar{
+    padding: 0;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .16);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background: $white;
+    .logo{width: 55px;}
+    .btn{
+        margin-right: 30px;
+        display: inline-block;
+        vertical-align: top;
+    }
+    .btn-circle{
+        background: $red;
+        color:#fff;
+        border-radius:50%;
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+        padding: 0;
+        line-height: 35px;
+        text-align: center;
+        &:hover{opacity: 0.7;}
+    }
+}
+
+.btn-user{
+    background: transparent;
+    padding: 0;
+    margin: 0 50px 0 0;
+    border: none;
+    outline: none;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    p{
+        margin: 0;
+        font: 8px/8px 'Calibri';
+        margin-top: -4px;
+    }
+
+    .user-avatar{
+        width: 35px;
+        height: 35px;
+        line-height: 30px;
+        color:$red;
+        font-size: 20px;
+        font-weight: bold;
+        display: inline-block;
+        border:solid 1px $red;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .user-box{
+        position: absolute;
+        min-width: 310px;
+        top:70px;
+        right: -25px;
+        background: $red;
+        transition: all 0.1s ease;
+        height: 0;
+        overflow: hidden;
+        box-shadow: 1px 1px 9px 0px rgba(0,0,0,0.2);
+        cursor: default;
+
+        .user-info{padding: 20px 30px 15px 30px;}
+        .user-name{
+            font: bold 14px 'Calibri';
+            margin: 0 0 5px 0;
+        }
+        .user-title{
+            font: normal 14px/14px 'Calibri';
+            margin: 0;
+        }
+        hr{
+            border-color:$white;
+            margin: 10px 0;
+        }
+    }
+    .user-box.active{
+        height: 190px;
+        overflow: visible;
+    }
+
+    .user-box-tip{
+        display: inline-block;
+        position: absolute;
+        right:32px;
+        top:-12px;
+        border-bottom: solid 12px $brown;
+        border-left: solid transparent 10px;
+        border-right: solid transparent 10px;
+    }
+    .user-email{
+        background: $brown;
+        line-height: 80px;
+        color:$red;
+    }
+    .user-avatar-wrapper{
+        width:80px;
+        height: 80px;
+        overflow: hidden;
+    }
+}

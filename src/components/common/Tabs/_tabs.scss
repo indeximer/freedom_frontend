@@ -1,0 +1,14 @@
+.tab-content{
+    display: none;
+    &.active{display:block;}
+}
+
+.tabs-nav{
+    button{
+        color:$grey-lighten-1;
+        padding: 1px 8px;
+        font-weight: bold;
+        margin-right: 20px;
+        &.active{border-bottom: 2px solid $red;}
+    }
+}

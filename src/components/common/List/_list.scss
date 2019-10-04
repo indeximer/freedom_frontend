@@ -1,0 +1,15 @@
+.list{
+    &.list-striped{
+        border-top:solid 1px $grey-line;
+        li{
+            word-wrap: break-word;
+            padding: 10px 60px;
+            border-bottom:solid 1px $grey-line;
+            color: $grey-lighten-1;
+            font-size: 20px;
+            &:nth-child(odd){
+                background: $grey-bg;
+            }
+        }
+    }
+}

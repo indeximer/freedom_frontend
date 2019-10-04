@@ -1,0 +1,60 @@
+@import "~material-components-web/dist/material-components-web.min.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "./components/_variables";
+@import "~react-quill/dist/quill.snow.css";
+
+
+html,
+body{
+  font-family: 'Roboto', sans-serif;
+  color: $main-font-color;
+  padding: 0;
+  margin: 0;
+  background: $main-bg-color;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{margin-top: 0;}
+.color-white{color:$white;}
+.color-red{color:$red;}
+.color-default{color:$main-font-color;}
+.color-purple{color:$purple;}
+.color-green{color:$green;}
+
+.card-body{padding: 15px;}
+.mdc-text-field{margin-bottom: 20px;}
+
+
+//components
+@import './components/layout/Navbar/navbar';
+@import './components/layout/main';
+@import './components/layout/Sidebar/sidebar';
+@import './components/common/headers/headers';
+@import './components/common/form/form';
+@import './components/common/SearchContainer/search';
+@import './components/common/Button/button';
+@import './components/common/table/table';
+@import './components/common/ContentItem/contentItem';
+@import './components/common/Tabs/tabs';
+@import './components/common/ImageSelector/imageSelector';
+@import './components/common/FadeComponents/fadeComponents';
+@import './components/common/Popup/popup';
+@import './components/common/Dropdown/dropdown';
+@import './components/common/loader/loader';
+@import './components/common/List/list';
+@import './components/common/Accordion/accordion';
+@import './components/common/Calendar/calendar';
+
+//modules
+@import './modules/User/user';
+@import './modules/EntranceHub/entranceHub';
+@import './modules/Products/products';
+@import './modules/Offerings/offerings';
+@import './modules/Codes/codes';
+@import './modules/Maintenance/maintenance';
