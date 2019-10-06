@@ -11,7 +11,7 @@ import { validateApiToken } from '../../api/apiConstants'
 /* Components */
 import ErrorBoundary from './ErrorBoundary'
 import Login from '../../modules/User/Login'
-import EntranceHub from '../../modules/EntranceHub'
+import Techniques from '../../modules/Techniques'
 import Products from '../../modules/Products'
 import AddProducts from '../../modules/Products/AddProducts'
 import Offerings from '../../modules/Offerings'
@@ -31,7 +31,7 @@ const routeList = [
   },
   {
     path: '/entrance-hub',
-    component: EntranceHub,
+    component: Techniques,
     exact: false,
     private:false
   },
