@@ -15,7 +15,7 @@ import {
 import logo from '../../assets/img/logo-white.png'
 
 const Main =  ({ children }) => {
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
 
     return(
         <div className="container-fluid">

@@ -4,7 +4,9 @@
 @import "./components/_variables";
 @import "~react-quill/dist/quill.snow.css";
 
-
+*{
+  box-sizing: border-box;
+}
 html,
 body{
   font-family: 'Roboto', sans-serif;
@@ -54,7 +56,4 @@ h6{margin-top: 0;}
 //modules
 @import './modules/User/user';
 @import './modules/Techniques/techniques';
-@import './modules/Products/products';
 @import './modules/Offerings/offerings';
-@import './modules/Codes/codes';
-@import './modules/Maintenance/maintenance';

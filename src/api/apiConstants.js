@@ -1,5 +1,3 @@
-import uuidV1 from 'uuid/v1'
-
 // Helpers
 import { asciiToHexa, randomString } from './../utils/helpers'
 

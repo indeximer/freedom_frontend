@@ -12,15 +12,9 @@ import { validateApiToken } from '../../api/apiConstants'
 import ErrorBoundary from './ErrorBoundary'
 import Login from '../../modules/User/Login'
 import Techniques from '../../modules/Techniques'
-import Products from '../../modules/Products'
-import AddProducts from '../../modules/Products/AddProducts'
 import Offerings from '../../modules/Offerings'
 import AddOffering from '../../modules/Offerings/AddOffering'
 import EditOffering from '../../modules/Offerings/EditOffering'
-import Codes from '../../modules/Codes'
-import Maintenance from '../../modules/Maintenance'
-import MaintenanceDetail from '../../modules/Maintenance/MaintenanceDetail'
-import Search from '../../modules/Maintenance/Search'
 
 const routeList = [
   {
@@ -30,23 +24,11 @@ const routeList = [
     private: false
   },
   {
-    path: '/entrance-hub',
+    path: '/techniques',
     component: Techniques,
     exact: false,
     private:false
   },
-  // {
-  //   path: '/products',
-  //   component: Products,
-  //   exact: true,
-  //   private:true
-  // },
-  // {
-  //   path: '/products/add',
-  //   component: AddProducts,
-  //   exact: false,
-  //   private:true
-  // },
   {
     path: '/offerings',
     component: Offerings,
@@ -67,34 +49,6 @@ const routeList = [
     exact: false,
     private:false,
     roles: ["OD_PRD_OFFERING_ADM"]
-  },
-  {
-    path: '/codes',
-    component: Codes,
-    exact: true,
-    private:false,
-    roles: ["OD_PRD_PROMOCODE_CONSULTA", "OD_PRD_PROMOCODE_ADM"]
-  },
-  {
-    path: '/maintenance',
-    component: Maintenance,
-    exact: true,
-    private:false,
-    roles: ["OD_PRD_MAINTENANCE_CONSULTA", "OD_PRD_MAINTENANCE_ADM"]
-  },
-  {
-    path: '/maintenance/details/:id',
-    component: MaintenanceDetail,
-    exact: false,
-    private:false,
-    roles: ["OD_PRD_MAINTENANCE_ADM"]
-  },
-  {
-    path: '/maintenance/search',
-    component: Search,
-    exact: false,
-    private:false,
-    roles: ["OD_PRD_MAINTENANCE_CONSULTA", "OD_PRD_MAINTENANCE_ADM"]
   }
 ]
 

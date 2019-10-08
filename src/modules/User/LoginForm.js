@@ -25,7 +25,7 @@ class LoginForm extends Component{
     componentDidMount(){
         const userToken = sessionStorage.getItem('api-token')
         if(validateApiToken(userToken)){
-            this.props.history.push('/entrance-hub')
+            this.props.history.push('/techniques')
         }
     }
 

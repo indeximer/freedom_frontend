@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Pagination from "react-js-pagination";
 
 //components
-import {Table, Thead, SelectAllThead, Tbody, TableFilters} from './index'
+import {Table, Thead, Tbody, TableFilters} from './index'
 import {SelectField} from '../form'
 import Loader from '../loader/Loader'
 
@@ -23,10 +23,7 @@ const TableBuilder = ({children, isFetching, tableData, disabled, classList, sel
             }
 
             <Table classList={classList}>
-                {selectAll 
-                    ? <SelectAllThead disabled={disabled} headers={thead}/>
-                    : <Thead headers={thead}/>
-                }                
+                <Thead headers={thead}/>
                 <Tbody disabled={disabled} rows={tbody} >
                     {children}
                 </Tbody>

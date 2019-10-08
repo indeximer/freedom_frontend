@@ -7,7 +7,7 @@ import FadeComponents from '../FadeComponents'
 const ContentLoader = (props) => {
     return(
         <FadeComponents>
-            <div className="w-100 text-center">
+            <div className="content-loader">
                 <Loader/>
             </div>
         </FadeComponents>
