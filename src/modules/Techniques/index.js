@@ -17,6 +17,15 @@ import ResponseModal from '../../components/common/Popup/ResponseModal'
 import ConfirmationModal from '../../components/common/Popup/ConfirmationModal'
 import ContentLoader from '../../components/common/loader/ContentLoader'
 import ModalLoader from '../../components/common/loader/ModalLoader'
+import {
+    AvatarCount,
+    List,
+    CollapsibleList,
+    SimpleListItem,
+    Typography
+} from 'rmwc'
+import '@rmwc/list/collapsible-list.css'
+import '@rmwc/avatar/avatar.css';
 
 
 class ListTechniques extends Component {
@@ -54,6 +63,52 @@ class ListTechniques extends Component {
         return (
             <Main showSidebar={true}>
                 <SearchBar handleChange={this.updateQuery} />
+                
+                <List twoLine avatarList>
+                    {techniques.map(technique =>(
+                        
+                            <CollapsibleList
+                                handle={
+                                    <SimpleListItem                                        
+                                        graphic={<AvatarCount size="large" value={technique.difficulty} />}
+                                        text={technique.name}
+                                        secondaryText={technique.skills.name}
+                                        metaIcon="chevron_right"
+                                />
+                                }
+                            >
+
+                                <Typography className="list-description" use="subtitle1">
+                                    subtitle1 subtitle1 subtitle1 subtitle1 subtitle1
+                                </Typography>
+                                <SimpleListItem
+                                    metaIcon={<AvatarCount size="medium" value={technique.power} />}
+                                    text="Poder"
+                                />
+                                <SimpleListItem
+                                    metaIcon={<AvatarCount size="medium" value={technique.form} />}
+                                    text="Forma"
+                                />
+                                <SimpleListItem
+                                    metaIcon={<AvatarCount size="medium" value={technique.area} />}
+                                    text="Área"
+                                />
+                                <SimpleListItem
+                                    metaIcon={<AvatarCount size="medium" value={technique.duration} />}
+                                    text="Duração"
+                                />
+                                <SimpleListItem
+                                    metaIcon={<AvatarCount size="medium" value={technique.execution} />}
+                                    text="Execução"
+                                />
+                                <SimpleListItem
+                                    metaIcon={<AvatarCount size="medium" value={technique.restriction} />}
+                                    text="Restrição"
+                                />
+                            </CollapsibleList>
+                        ))
+                    }
+                </List>
 
                 {isFetching &&
                     <ContentLoader/>

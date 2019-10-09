@@ -31,7 +31,17 @@ h6{margin-top: 0;}
 
 .card-body{padding: 15px;}
 .mdc-text-field{margin-bottom: 20px;}
-
+.rmwc-avatar__text-inner{font-family: 'Roboto', sans-serif;}
+.mdc-list--two-line,
+.mdc-list--avatar-list{
+  .rmwc-collapsible-list__children-inner{
+    .mdc-list-item{height: 48px;}
+  }  
+}
+.list-description{
+  padding: 10px 16px 10px 32px;
+  display: flex;
+}
 
 //components
 @import './components/layout/Navbar/navbar';
