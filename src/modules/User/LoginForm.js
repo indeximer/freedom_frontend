@@ -34,8 +34,8 @@ class LoginForm extends Component{
         const user = this.state.user
         const password = this.state.password
         const encodedLogin = {login: btoa(`${user}:${password}`)}
-
-        this.props.history.push('/entrance-hub')
+        console.log('login')
+        this.props.history.push('/techniques')
 
         // this.props.dispatch(loginAsync(encodedLogin))
         //     .then(res => {

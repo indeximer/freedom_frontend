@@ -19,6 +19,7 @@ import ContentLoader from '../../components/common/loader/ContentLoader'
 import ModalLoader from '../../components/common/loader/ModalLoader'
 import {
     AvatarCount,
+    Button,
     List,
     CollapsibleList,
     SimpleListItem,
@@ -51,8 +52,6 @@ class ListTechniques extends Component {
 
     render(){
         let { techniques, isFetching, isSaving } = this.props
-        console.log(techniques)
-
         techniques = techniques.map(technique =>{
             return {
                 ...technique,
@@ -68,16 +67,22 @@ class ListTechniques extends Component {
                     {techniques.map(technique =>(
                         
                             <CollapsibleList
+                                key={technique.id}
                                 handle={
                                     <SimpleListItem                                        
                                         graphic={<AvatarCount size="large" value={technique.difficulty} />}
                                         text={technique.name}
                                         secondaryText={technique.skills.name}
                                         metaIcon="chevron_right"
-                                />
+                                    />
                                 }
                             >
-
+                                <div className="btn-wrapper">
+                                    <Button label="Excluir" icon="delete_forever" danger unelevated />
+                                    <Link to={`/techniques/edit/${technique.id}`}>
+                                        <Button label="Editar" icon="edit" unelevated />
+                                    </Link>
+                                </div>                                
                                 <Typography className="list-description" use="subtitle1">
                                     subtitle1 subtitle1 subtitle1 subtitle1 subtitle1
                                 </Typography>
