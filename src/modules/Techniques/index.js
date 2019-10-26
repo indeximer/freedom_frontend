@@ -20,6 +20,7 @@ import ModalLoader from '../../components/common/loader/ModalLoader'
 import {
     AvatarCount,
     Button,
+    Fab,
     List,
     CollapsibleList,
     SimpleListItem,
@@ -52,16 +53,12 @@ class ListTechniques extends Component {
 
     render(){
         let { techniques, isFetching, isSaving } = this.props
-        techniques = techniques.map(technique =>{
-            return {
-                ...technique,
-                actions: {}
-            }
-        })
+        const { query } = this.state
+        techniques = filterCollection(query, techniques)
     
         return (
             <Main showSidebar={true}>
-                <SearchBar handleChange={this.updateQuery} />
+                <SearchBar handleChange={this.updateQuery} query={query} />
                 
                 <List twoLine avatarList>
                     {techniques.map(technique =>(
@@ -114,6 +111,10 @@ class ListTechniques extends Component {
                         ))
                     }
                 </List>
+
+                <Link className="floating-btn" to="/techniques/add">
+                    <Fab icon="add" />
+                </Link>
 
                 {isFetching &&
                     <ContentLoader/>

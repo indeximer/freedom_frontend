@@ -1,19 +1,23 @@
 import React from 'react'
-import {DebounceInput} from 'react-debounce-input';
+import { DebounceInput } from 'react-debounce-input'
+import { TextField  } from 'rmwc'
 //import PropTypes from 'prop-types'
 
-const SearchBar = ({handleChange}) => {
+const SearchBar = ({ handleChange, query }) => {
     return (
-        <div className="col">
-            <div className="search-input">
-                <i className="fa fa-search"></i>
-                <DebounceInput
-                    className="form-control"
-                    placeholder="Pesquisar"
-                    debounceTimeout={300}
-                    onChange={event => handleChange(event.target.value, 'name')} />
-            </div>
-        </div>
+        <DebounceInput
+            className="search-input w-100"
+            element={TextField}
+            icon="search"
+            trailingIcon={{
+                icon: 'close',
+                tabIndex: 0,
+                onClick: () => handleChange('')
+            }}
+            value={query}
+            label="Procurar..."
+            debounceTimeout={300}
+            onChange={event => handleChange(event.target.value, 'name')} />
     )
 }
 

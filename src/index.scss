@@ -17,6 +17,8 @@ body{
   max-width: 100%;
   overflow-x: hidden;
 }
+a{text-decoration: none;}
+.w-100{width: 100%;}
 h1,
 h2,
 h3,
@@ -30,7 +32,10 @@ h6{margin-top: 0;}
 .color-green{color:$green;}
 
 .card-body{padding: 15px;}
-.mdc-text-field{margin-bottom: 20px;}
+.mdc-text-field{
+  margin-bottom: 20px;
+  border-radius: 0;
+}
 .rmwc-avatar__text-inner{font-family: 'Roboto', sans-serif;}
 .mdc-list--two-line,
 .mdc-list--avatar-list{
@@ -47,7 +52,11 @@ h6{margin-top: 0;}
   display: flex;
   justify-content: space-evenly;
 }
-
+.floating-btn{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
 //components
 @import './components/layout/Navbar/navbar';
 @import './components/layout/main';
