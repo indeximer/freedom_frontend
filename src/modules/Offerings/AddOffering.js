@@ -12,7 +12,6 @@ import AddOfferingForm from './AddOfferingForm'
 import ResponseModal from '../../components/common/Popup/ResponseModal'
 
 const AddOffering = (props) => {
-
     const handleSubmit = (offering) => {
         props.dispatch(addOfferingstAsync(JSON.stringify(offering)))
             .then((res) => {
