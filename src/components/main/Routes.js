@@ -12,9 +12,6 @@ import { validateApiToken } from '../../api/apiConstants'
 import ErrorBoundary from './ErrorBoundary'
 import Login from '../../modules/User/Login'
 import Techniques from '../../modules/Techniques'
-import Offerings from '../../modules/Offerings'
-import AddOffering from '../../modules/Offerings/AddOffering'
-import EditOffering from '../../modules/Offerings/EditOffering'
 
 const routeList = [
   {
@@ -28,27 +25,6 @@ const routeList = [
     component: Techniques,
     exact: false,
     private:false
-  },
-  {
-    path: '/offerings',
-    component: Offerings,
-    exact: true,
-    private: false,
-    roles: ["OD_PRD_OFFERING_CONSULTA", "OD_PRD_OFFERING_ADM"]
-  },
-  {
-    path: '/offerings/add',
-    component: AddOffering,
-    exact: false,
-    private:false,
-    roles: ["OD_PRD_OFFERING_ADM"]
-  },
-  {
-    path: '/offerings/edit/:id',
-    component: EditOffering,
-    exact: false,
-    private:false,
-    roles: ["OD_PRD_OFFERING_ADM"]
   }
 ]
 
