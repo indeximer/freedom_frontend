@@ -1,7 +1,7 @@
-import { apiUrl, apiVersion } from './apiConstants'
+import { apiUrl } from './apiConstants'
 
 export const post = (payload) => {
-    return fetch(`${apiUrl}${apiVersion}/auth`,
+    return fetch(`${apiUrl}/auth`,
         {
             method:'POST',
             headers: new Headers({

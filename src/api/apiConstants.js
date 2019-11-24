@@ -1,10 +1,4 @@
-// Helpers
-import { asciiToHexa, randomString } from './../utils/helpers'
-
 export const apiUrl = process.env.REACT_APP_API_ROOT
-
-export const apiVersion = "/v1"
-
 
 export const validateApiToken = () => {
     let token = sessionStorage.getItem('api-token')
@@ -35,7 +29,6 @@ const headers = () => {
     return new Headers({
         'Authorization': sessionStorage.getItem('api-token'),
         'Content-Type': 'text/plain',
-        'X-B3-TraceId': asciiToHexa(randomString()),
         'session-flow-id': sessionStorage.getItem('session-id'),
     })
 }

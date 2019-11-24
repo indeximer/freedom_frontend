@@ -1,10 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 
-//helpers
-
-import {getEnv} from '../../utils/helpers'
-
 //Api
 import { validateApiToken } from '../../api/apiConstants'
 
@@ -49,7 +45,6 @@ const  PrivateRoute = ({component: Component, ...rest}) => {
   const apiToken = sessionStorage.getItem('api-token')
   const neededRoles = rest.roles
   const userRoles = sessionStorage.getItem('user-roles').split(',')
-  const env = getEnv()
   let hasRoles = false
 
   if(Array.isArray(neededRoles)){
