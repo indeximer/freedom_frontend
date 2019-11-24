@@ -1,26 +1,8 @@
-import { apiUrl } from './apiConstants'
+import { apiUrl, request } from './apiConstants'
 const endPoint = '/Techniques'
 
-export const getAll = () => {
-    return fetch(`${apiUrl}${endPoint}`)
-      .then((response) => response.json())
-      .then((data) => data)
-}
-
-export const getById = (id) => {
-  return fetch(`${apiUrl}${endPoint}/${id}`)
-    .then((response) => response.json())
-    .then((data) => data)
-}
-
-export const add = (payload) => {
-  return fetch(`${apiUrl}${endPoint}`)
-    .then((response) => response.json())
-    .then((data) => data)
-}
-
-export const update = (payload) => {
-  return fetch(`${apiUrl}${endPoint}`)
-    .then((response) => response.json())
-    .then((data) => data)
-}
+export const getAll = () => request(endPoint)
+export const getById = (id) => request(`${endPoint}/${id}`)
+export const add = (payload) => request(endPoint, payload, 'POST')
+export const update = (id, payload) => request(`${endPoint}/${id}`, payload, 'PUT')
+export const remove = (id) => request(`${endPoint}/${id}`, null, 'DELETE')
