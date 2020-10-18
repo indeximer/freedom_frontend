@@ -1,7 +1,0 @@
-export {default as Table} from "./Table"
-export {default as TableBuilder} from "./TableBuilder"
-export {default as Thead} from "./Thead"
-export {default as Tbody} from "./Tbody"
-export {default as TrActions} from "./TrActions"
-export {default as TablePagination} from "./TablePagination"
-export {default as TableFilters} from "./TableFilters"
