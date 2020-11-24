@@ -1,0 +1,8 @@
+node_modules
+/lib
+/dist
+test
+e2e
+scripts
+*.min.js
+*.test.js
