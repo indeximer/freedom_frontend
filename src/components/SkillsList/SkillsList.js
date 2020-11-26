@@ -1,5 +1,5 @@
 import React from 'react'
-import { getSkills } from '../../services'
+import { getSkills } from '@/services'
 import { useList } from 'react-firebase-hooks/database'
 
 export function SkillsList() {
