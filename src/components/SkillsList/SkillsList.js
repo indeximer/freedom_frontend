@@ -4,7 +4,6 @@ import { useList } from 'react-firebase-hooks/database'
 
 export function SkillsList() {
   const [skills, loading] = useList(getSkills())
-
   return (
     <div>
       <h2>Skills list</h2>
