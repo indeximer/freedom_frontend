@@ -9,6 +9,7 @@ module.exports = merge(commonConfig, {
   devtool: 'eval-source-map',
   devServer: {
     contentBase: resolve(__dirname, '../dist'),
+    historyApiFallback: true,
     hot: true
   },
   plugins: [

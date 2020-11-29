@@ -1,6 +1,7 @@
-import firebase from '../firebase'
+import firebase from '@/config/firebase'
+import 'firebase/firestore'
 
-const db = firebase.ref('/skills')
+const db = firebase.firestore().collection('skills')
 
 export const getSkills = () => db
 

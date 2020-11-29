@@ -1,6 +1,6 @@
 import React from 'react'
-import { SkillsList } from '@/components/SkillsList'
+import AppRouter from './routes'
 
 export default function App() {
-  return <SkillsList></SkillsList>
+  return <AppRouter />
 }

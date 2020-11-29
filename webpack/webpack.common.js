@@ -4,8 +4,6 @@ const svgToMiniDataURI = require('mini-svg-data-uri')
 
 module.exports = {
   entry: resolve(__dirname, '../src/index.js'),
-  mode: 'development',
-  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -43,7 +41,8 @@ module.exports = {
     }
   },
   output: {
-    path: resolve('./dist'),
+    path: resolve('../dist'),
+    publicPath: '/',
     filename: 'bundle.js'
   },
   plugins: [

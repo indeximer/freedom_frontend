@@ -1,17 +1,17 @@
 import React from 'react'
 import { getSkills } from '@/services'
-import { useList } from 'react-firebase-hooks/database'
+import { useCollection } from 'react-firebase-hooks/firestore'
 
 export function SkillsList() {
-  const [skills, loading] = useList(getSkills())
+  const [skills, loading] = useCollection(getSkills())
   return (
     <div>
       <h2>Skills list</h2>
       {loading && <p>Carregando...</p>}
       <ul>
         {!loading &&
-          skills.map(skill => <li key={skill.key}>{skill.val().name}</li>)}
-      </ul>{' '}
+          skills.docs.map(skill => <li key={skill.id}>{skill.data().name}</li>)}
+      </ul>
     </div>
   )
 }
