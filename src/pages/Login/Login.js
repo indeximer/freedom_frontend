@@ -1,22 +1,11 @@
 import React, { useState } from 'react'
+import { useAuthenticationContext } from '@/contexts/Authentication'
 import { Link } from 'react-router-dom'
-import firebase from '@/config/firebase'
-import 'firebase/auth'
 
 export function LoginPage() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
-
-  const logar = async () => {
-    try {
-      const response = await firebase
-        .auth()
-        .signInWithEmailAndPassword(email, senha)
-      alert('Usuario Logado')
-    } catch (e) {
-      alert(e)
-    }
-  }
+  const { logIn, logOut } = useAuthenticationContext()
 
   return (
     <form>
@@ -38,12 +27,17 @@ export function LoginPage() {
         />
       </div>
       <div>
-        <button type="button" onClick={logar}>
+        <button type="button" onClick={() => logIn(email, senha)}>
           Logar
         </button>
       </div>
       <p>
         <Link to="/password-recovery">Recuperar senha</Link>
+      </p>
+      <p>
+        <button type="button" onClick={() => logOut()}>
+          sair
+        </button>
       </p>
     </form>
   )

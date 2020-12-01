@@ -1,21 +1,11 @@
 import React, { useState } from 'react'
-import firebase from '@/config/firebase'
-import 'firebase/auth'
+import { useAuthenticationContext } from '@/contexts/Authentication'
 
 export function RegisterPage() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
 
-  const createUser = async () => {
-    try {
-      const response = await firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, senha)
-      alert('Usuario Cadastrado!')
-    } catch (e) {
-      alert(e)
-    }
-  }
+  const { register } = useAuthenticationContext()
 
   return (
     <form>
@@ -37,7 +27,7 @@ export function RegisterPage() {
         />
       </div>
       <div>
-        <button type="button" onClick={createUser}>
+        <button type="button" onClick={() => register(email, senha)}>
           Logar
         </button>
       </div>

@@ -1,18 +1,9 @@
 import React, { useState } from 'react'
-import firebase from '@/config/firebase'
-import 'firebase/auth'
+import { useAuthenticationContext } from '@/contexts/Authentication'
 
 export function PasswordRecoveryPage() {
   const [email, setEmail] = useState('')
-
-  const passwordRecover = async () => {
-    try {
-      const response = await firebase.auth().sendPasswordResetEmail(email)
-      alert('E-mail enviado')
-    } catch (e) {
-      alert(e)
-    }
-  }
+  const { passwordRecover } = useAuthenticationContext()
 
   return (
     <form>
@@ -26,7 +17,7 @@ export function PasswordRecoveryPage() {
         />
       </div>
       <div>
-        <button type="button" onClick={passwordRecover}>
+        <button type="button" onClick={() => passwordRecover(email)}>
           Enviar
         </button>
       </div>
