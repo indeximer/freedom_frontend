@@ -1,14 +1,19 @@
-import firebase from '@/config/firebase'
-import 'firebase/firestore'
+import { useMemo } from 'react'
+import { useService } from '@/contexts/Service'
 
-const db = firebase.firestore().collection('skills')
+export function useSkillsService() {
+  const { client } = useService()
 
-export const getSkills = () => db
-
-export const createSkill = payload => db.push(payload)
-
-export const updateSkill = (payload, id) => db.child(id).update(payload)
-
-export const removeSkill = id => db.child(id).remove()
-
-export const removeAllSkills = () => db.remove()
+  return useMemo(() => {
+    return {
+      getSkills: async () => {
+        try {
+          const response = await client.get('skills')
+          return response
+        } catch (e) {
+          alert(e)
+        }
+      }
+    }
+  }, [client])
+}

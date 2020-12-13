@@ -1,16 +1,23 @@
-import React from 'react'
-import { getSkills } from '@/services'
-import { useCollection } from 'react-firebase-hooks/firestore'
+import React, { useState, useEffect } from 'react'
+import { useSkillsService } from '@/services'
 
 export function SkillsList() {
-  const [skills, loading] = useCollection(getSkills())
+  const [skills, setSkills] = useState()
+  const { getSkills } = useSkillsService()
+
+  useEffect(() => {
+    const loadSkills = async () => {
+      const skillsResponse = await getSkills()
+      setSkills(skillsResponse)
+    }
+    loadSkills()
+  }, [setSkills, getSkills])
+
   return (
     <div>
       <h2>Skills list</h2>
-      {loading && <p>Carregando...</p>}
       <ul>
-        {!loading &&
-          skills.docs.map(skill => <li key={skill.id}>{skill.data().name}</li>)}
+        {skills && skills.map(skill => <li key={skill.id}>{skill.name}</li>)}
       </ul>
     </div>
   )
