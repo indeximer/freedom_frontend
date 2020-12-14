@@ -10,6 +10,7 @@ module.exports = merge(commonConfig, {
   devServer: {
     contentBase: resolve(__dirname, '../dist'),
     historyApiFallback: true,
+    open: true,
     hot: true
   },
   plugins: [
