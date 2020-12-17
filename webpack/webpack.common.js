@@ -1,6 +1,7 @@
 const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const svgToMiniDataURI = require('mini-svg-data-uri')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: resolve(__dirname, '../src/index.js'),
@@ -48,6 +49,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: resolve(__dirname, '../public/index.html')
+    }),
+    new Dotenv({
+      path: resolve(__dirname, '../.env')
     })
   ]
 }
