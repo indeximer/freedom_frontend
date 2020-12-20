@@ -4,6 +4,8 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import firebase from '@/config/firebase'
 import 'firebase/auth'
 
+import { Splash } from '@/components/Splash'
+
 export function AuthenticationProvider({ children }) {
   const [user, loading, error] = useAuthState(firebase.auth())
 
@@ -34,7 +36,7 @@ export function AuthenticationProvider({ children }) {
       }}
     >
       {error && <p>Erro tentando autenticar...</p>}
-      {loading ? <p>CARREGANDO AUTENTICAÇÃO ...</p> : children}
+      {loading ? <Splash /> : children}
     </AuthenticationContext.Provider>
   )
 }

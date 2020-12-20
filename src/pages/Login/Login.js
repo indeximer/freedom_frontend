@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAuthenticationContext } from '@/contexts/Authentication'
 import { Link } from 'react-router-dom'
+import { useNavigation } from '@/hooks'
 
 export function LoginPage() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
-  const { logIn, logOut } = useAuthenticationContext()
+  const { logIn, isAuthenticated } = useAuthenticationContext()
+  const { navigateTo } = useNavigation()
+
+  useEffect(() => {
+    if (isAuthenticated()) navigateTo('/')
+  }, [isAuthenticated, navigateTo])
 
   return (
     <form>
@@ -33,11 +39,6 @@ export function LoginPage() {
       </div>
       <p>
         <Link to="/password-recovery">Recuperar senha</Link>
-      </p>
-      <p>
-        <button type="button" onClick={() => logOut()}>
-          sair
-        </button>
       </p>
     </form>
   )
