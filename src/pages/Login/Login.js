@@ -40,6 +40,9 @@ export function LoginPage() {
       <p>
         <Link to="/password-recovery">Recuperar senha</Link>
       </p>
+      <p>
+        <Link to="/register">Ainda não tem uma conta? Registre-se!</Link>
+      </p>
     </form>
   )
 }

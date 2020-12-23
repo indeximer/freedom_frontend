@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useAuthenticationContext } from '@/contexts/Authentication'
 
 export function HomePage() {
@@ -7,6 +8,9 @@ export function HomePage() {
   return (
     <div>
       <p>Logado como: {user.email}</p>
+      <p>
+        <Link to="/skills">Lista de Habilidades</Link>
+      </p>
       <button type="button" onClick={() => logOut()}>
         sair
       </button>

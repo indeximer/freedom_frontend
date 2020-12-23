@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useSkillsService } from '@/services'
 
 export function SkillsList() {
@@ -19,6 +20,7 @@ export function SkillsList() {
       <ul>
         {skills && skills.map(skill => <li key={skill.id}>{skill.name}</li>)}
       </ul>
+      <Link to="/">Voltar</Link>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuthenticationContext } from '@/contexts/Authentication'
 
 export function RegisterPage() {
@@ -30,6 +31,9 @@ export function RegisterPage() {
         <button type="button" onClick={() => register(email, senha)}>
           Logar
         </button>
+        <p>
+          <Link to="/login">Voltar</Link>
+        </p>
       </div>
     </form>
   )
