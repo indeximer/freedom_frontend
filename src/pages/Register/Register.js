@@ -1,12 +1,24 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthenticationContext } from '@/contexts/Authentication'
+import { useNavigation } from '@/hooks'
 
 export function RegisterPage() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
 
-  const { register } = useAuthenticationContext()
+  const { register, logIn } = useAuthenticationContext()
+  const { navigateTo } = useNavigation()
+
+  const handleRegister = async () => {
+    try {
+      await register(email, senha)
+      await logIn(email, senha)
+      navigateTo('/')
+    } catch (e) {
+      alert('Erro no cadastro')
+    }
+  }
 
   return (
     <form>
@@ -28,7 +40,7 @@ export function RegisterPage() {
         />
       </div>
       <div>
-        <button type="button" onClick={() => register(email, senha)}>
+        <button type="button" onClick={handleRegister}>
           Logar
         </button>
         <p>
