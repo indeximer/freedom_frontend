@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthenticationContext } from '@/contexts/Authentication'
 import { useNavigation } from '@/hooks'
+import { useLoader } from '@/contexts/Loader'
 
 export function RegisterPage() {
   const [email, setEmail] = useState('')
@@ -9,13 +10,17 @@ export function RegisterPage() {
 
   const { register, logIn } = useAuthenticationContext()
   const { navigateTo } = useNavigation()
+  const { openLoader, closeLoader } = useLoader()
 
   const handleRegister = async () => {
+    openLoader()
     try {
       await register(email, senha)
       await logIn(email, senha)
+      closeLoader()
       navigateTo('/')
     } catch (e) {
+      closeLoader()
       alert('Erro no cadastro')
     }
   }

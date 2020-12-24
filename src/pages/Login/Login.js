@@ -2,12 +2,20 @@ import React, { useState, useEffect } from 'react'
 import { useAuthenticationContext } from '@/contexts/Authentication'
 import { Link } from 'react-router-dom'
 import { useNavigation } from '@/hooks'
+import { useLoader } from '@/contexts/Loader'
 
 export function LoginPage() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const { logIn, isAuthenticated } = useAuthenticationContext()
   const { navigateTo } = useNavigation()
+  const { openLoader, closeLoader } = useLoader()
+
+  const handleLogin = async () => {
+    openLoader()
+    await logIn(email, senha)
+    closeLoader()
+  }
 
   useEffect(() => {
     if (isAuthenticated()) navigateTo('/')
@@ -33,7 +41,7 @@ export function LoginPage() {
         />
       </div>
       <div>
-        <button type="button" onClick={() => logIn(email, senha)}>
+        <button type="button" onClick={handleLogin}>
           Logar
         </button>
       </div>
