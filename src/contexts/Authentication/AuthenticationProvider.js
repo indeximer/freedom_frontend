@@ -9,15 +9,15 @@ import { Splash } from '@/components/Splash'
 export function AuthenticationProvider({ children }) {
   const [user, loading, error] = useAuthState(firebase.auth())
 
-  const logIn = (email, senha) =>
-    firebase.auth().signInWithEmailAndPassword(email, senha)
+  const logIn = (email, password) =>
+    firebase.auth().signInWithEmailAndPassword(email, password)
 
   const logOut = () => firebase.auth().signOut()
 
   const passwordRecover = email => firebase.auth().sendPasswordResetEmail(email)
 
-  const register = (email, senha) =>
-    firebase.auth().createUserWithEmailAndPassword(email, senha)
+  const register = (email, password) =>
+    firebase.auth().createUserWithEmailAndPassword(email, password)
 
   const isAuthenticated = () => {
     if (!loading && user) return true
