@@ -33,12 +33,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
+    modules: [resolve(__dirname, '../node_modules')],
     alias: {
-      '@': resolve(__dirname, '../src'),
-      'react-hook-form': resolve(
-        __dirname,
-        '../node_modules/react-hook-form/dist/react-hook-form.ie11.js'
-      )
+      '@': resolve(__dirname, '../src')
     }
   },
   output: {
