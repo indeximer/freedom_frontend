@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import { StyledContainer, StyledCol } from './styles'
 import Grid from '@material-ui/core/Grid'
 
