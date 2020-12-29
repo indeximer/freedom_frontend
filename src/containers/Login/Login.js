@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { useAuthenticationContext } from '@/contexts/Authentication'
 import { Link } from 'react-router-dom'
 import { useNavigation } from '@/hooks'
@@ -12,12 +12,15 @@ export function LoginContainer() {
   const { navigateTo } = useNavigation()
   const { openLoader, closeLoader } = useLoader()
 
-  const handleLogin = async formData => {
-    const { email, password } = formData
-    openLoader()
-    await logIn(email, password)
-    closeLoader()
-  }
+  const handleLogin = useCallback(
+    async formData => {
+      const { email, password } = formData
+      openLoader()
+      await logIn(email, password)
+      closeLoader()
+    },
+    [openLoader, closeLoader, logIn]
+  )
 
   useEffect(() => {
     if (isAuthenticated()) navigateTo('/')

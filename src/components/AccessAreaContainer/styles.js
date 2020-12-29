@@ -13,6 +13,7 @@ export const StyledCol = styled(Grid)`
   display: flex;
   flex-direction: column;
   padding: 0 100px;
+  justify-content: center;
 
   button {
     margin-bottom: 30px;

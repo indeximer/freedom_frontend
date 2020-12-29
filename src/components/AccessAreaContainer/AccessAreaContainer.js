@@ -6,7 +6,7 @@ export function AccessAreaContainer({ children }) {
   return (
     <StyledContainer maxWidth={false}>
       <Grid container spacing={0} justify="flex-end">
-        <StyledCol xs={12} sm={6} lg={4} item justify="center">
+        <StyledCol xs={12} sm={6} lg={4} item>
           {children}
         </StyledCol>
       </Grid>

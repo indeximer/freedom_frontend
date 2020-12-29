@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { useValidation } from './hooks/useValidation'
 import { Form } from './partials/Form'
 
-export function LoginForm({ onSUbmit }) {
+export function LoginForm({ onSubmit }) {
   const { validationResolver } = useValidation()
   const methods = useForm({ resolver: validationResolver })
   const { errors } = methods
@@ -15,7 +15,7 @@ export function LoginForm({ onSUbmit }) {
 
   return (
     <FormProvider {...methods} getError={getError}>
-      <Form onSubmit={onSUbmit} />
+      <Form onSubmit={onSubmit} />
     </FormProvider>
   )
 }
