@@ -7,7 +7,7 @@ export function HomePage() {
 
   return (
     <div>
-      <p>Logado como: {user.email}</p>
+      <p>Logado como: {user.displayName}</p>
       <p>
         <Link to="/skills">Lista de Habilidades</Link>
       </p>

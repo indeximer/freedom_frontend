@@ -16,8 +16,11 @@ export function AuthenticationProvider({ children }) {
 
   const passwordRecover = email => firebase.auth().sendPasswordResetEmail(email)
 
-  const register = (email, password) =>
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+  const register = (email, password, displayName) =>
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(result => result.user.updateProfile({ displayName }))
 
   const isAuthenticated = () => {
     if (!loading && user) return true

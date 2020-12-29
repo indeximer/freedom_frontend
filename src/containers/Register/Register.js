@@ -15,9 +15,9 @@ export function RegisterContainer() {
   const handleRegister = useCallback(
     async formData => {
       openLoader()
-      const { email, password } = formData
+      const { displayName, email, password } = formData
       try {
-        await register(email, password)
+        await register(email, password, displayName)
         await logIn(email, password)
         closeLoader()
         navigateTo('/')
