@@ -12,25 +12,39 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 300;
     font-style: normal;
   }
+
   @font-face {
     font-family: 'Roboto';
     src: url(${RobotRegular}) format('woff2');
     font-weight: 400;
     font-style: normal;
   }
+
   @font-face {
     font-family: 'Roboto';
     src: url(${RobotMedium}) format('woff2');
     font-weight: 500;
     font-style: normal;
   }
+
   @font-face {
     font-family: 'Roboto';
     src: url(${RobotBold}) format('woff2');
     font-weight: 700;
     font-style: normal;
   }
+
   body{
     font-family: 'Roboto';
   }
+
+  .MuiFormControl-root{
+    width: 100%;
+    margin-bottom: 30px;
+    .MuiFormHelperText-root{
+      position: absolute;
+      bottom: -20px;
+    }
+  }
+
 `

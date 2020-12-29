@@ -32,8 +32,14 @@ export function Form({ onSubmit }) {
         />
       </div>
       <div>
-        <Button type="submit" variant="contained" color="primary">
-          Logar
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          size="large"
+          fullWidth
+        >
+          Acessar
         </Button>
       </div>
     </form>

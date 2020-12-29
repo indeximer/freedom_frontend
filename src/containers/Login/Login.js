@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { useNavigation } from '@/hooks'
 import { useLoader } from '@/contexts/Loader'
 import { LoginForm } from '@/components/LoginForm'
+import { AccessAreaContainer } from '@/components/AccessAreaContainer'
+import Typography from '@material-ui/core/Typography'
 
 export function LoginContainer() {
   const { logIn, isAuthenticated } = useAuthenticationContext()
@@ -22,15 +24,20 @@ export function LoginContainer() {
   }, [isAuthenticated, navigateTo])
 
   return (
-    <>
-      <h1>Login</h1>
+    <AccessAreaContainer>
+      <Typography variant="h2" gutterBottom color="primary">
+        A aventura vai começar!
+      </Typography>
+      <Typography variant="subtitle2" paragraph>
+        Acesse sua conta
+      </Typography>
       <LoginForm onSubmit={handleLogin} />
-      <p>
+      <Typography gutterBottom>
         <Link to="/password-recovery">Recuperar senha</Link>
-      </p>
-      <p>
+      </Typography>
+      <Typography>
         <Link to="/register">Ainda não tem uma conta? Registre-se!</Link>
-      </p>
-    </>
+      </Typography>
+    </AccessAreaContainer>
   )
 }
