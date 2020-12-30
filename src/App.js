@@ -3,7 +3,8 @@ import { StylesProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { AuthenticationProvider } from '@/contexts/Authentication'
 import { LoaderProvider } from '@/contexts/Loader'
-import { ServiceProvider } from '@/contexts/Service'
+import { MessageEmitterProvider } from '@/contexts/MessageEmitter'
+
 import AppRouter from './routes'
 import { GlobalStyle } from '@/components/GlobalStyles'
 
@@ -12,13 +13,13 @@ export default function App() {
     <StylesProvider injectFirst>
       <GlobalStyle />
       <CssBaseline />
-      <AuthenticationProvider>
-        <LoaderProvider>
-          <ServiceProvider>
+      <MessageEmitterProvider>
+        <AuthenticationProvider>
+          <LoaderProvider>
             <AppRouter />
-          </ServiceProvider>
-        </LoaderProvider>
-      </AuthenticationProvider>
+          </LoaderProvider>
+        </AuthenticationProvider>
+      </MessageEmitterProvider>
     </StylesProvider>
   )
 }

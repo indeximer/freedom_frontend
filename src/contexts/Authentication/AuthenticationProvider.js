@@ -1,5 +1,6 @@
 import React from 'react'
 import { AuthenticationContext } from './AuthenticationContext'
+import { useMessageEmitter } from '@/contexts/MessageEmitter'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import firebase from '@/config/firebase'
 import 'firebase/auth'
@@ -8,9 +9,15 @@ import { Splash } from '@/components/Splash'
 
 export function AuthenticationProvider({ children }) {
   const [user, loading, error] = useAuthState(firebase.auth())
+  const { emitErrorMessage } = useMessageEmitter()
 
-  const logIn = (email, password) =>
-    firebase.auth().signInWithEmailAndPassword(email, password)
+  const logIn = async (email, password) => {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password)
+    } catch (e) {
+      emitErrorMessage(e.message)
+    }
+  }
 
   const logOut = () => firebase.auth().signOut()
 
