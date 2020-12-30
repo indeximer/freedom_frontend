@@ -16,15 +16,13 @@ export function RegisterContainer() {
     async formData => {
       openLoader()
       const { displayName, email, password } = formData
-      try {
-        await register(email, password, displayName)
+      const registerResponse = await register(email, password, displayName)
+      if (registerResponse) {
         await logIn(email, password)
         closeLoader()
         navigateTo('/')
-      } catch (e) {
-        closeLoader()
-        alert('Erro no cadastro')
       }
+      closeLoader()
     },
     [openLoader, closeLoader, navigateTo, register, logIn]
   )

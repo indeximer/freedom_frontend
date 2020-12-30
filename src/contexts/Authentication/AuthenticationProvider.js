@@ -21,13 +21,25 @@ export function AuthenticationProvider({ children }) {
 
   const logOut = () => firebase.auth().signOut()
 
-  const passwordRecover = email => firebase.auth().sendPasswordResetEmail(email)
+  const passwordRecover = async email => {
+    try {
+      await firebase.auth().sendPasswordResetEmail(email)
+    } catch (e) {
+      emitErrorMessage(e.message)
+    }
+  }
 
-  const register = (email, password, displayName) =>
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(result => result.user.updateProfile({ displayName }))
+  const register = async (email, password, displayName) => {
+    try {
+      const { user } = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+      await user.updateProfile({ displayName })
+      return user
+    } catch (e) {
+      emitErrorMessage(e.message)
+    }
+  }
 
   const isAuthenticated = () => {
     if (!loading && user) return true
