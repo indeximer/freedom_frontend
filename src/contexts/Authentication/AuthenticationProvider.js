@@ -9,7 +9,7 @@ import { Splash } from '@/components/Splash'
 
 export function AuthenticationProvider({ children }) {
   const [user, loading, error] = useAuthState(firebase.auth())
-  const { emitErrorMessage } = useMessageEmitter()
+  const { emitErrorMessage, emitSuccessMessage } = useMessageEmitter()
 
   const logIn = async (email, password) => {
     try {
@@ -24,6 +24,11 @@ export function AuthenticationProvider({ children }) {
   const passwordRecover = async email => {
     try {
       await firebase.auth().sendPasswordResetEmail(email)
+      emitSuccessMessage(
+        'Um mensagem para a recuperação de sua senha foi enviado, verifica seu e-mail.'
+      )
+
+      return { success: true }
     } catch (e) {
       emitErrorMessage(e.message)
     }

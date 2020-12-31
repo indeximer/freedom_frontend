@@ -6,7 +6,6 @@ import { ServiceProvider } from '@/contexts/Service'
 
 import { HomePage } from '@/pages/Home'
 import { LoginPage } from '@/pages/Login'
-import { PasswordRecoveryPage } from '@/pages/PasswordRecovery'
 import { RegisterPage } from '@/pages/Register'
 import { SkillsPage } from '@/pages/Skills'
 
@@ -24,11 +23,6 @@ export default function AppRouter() {
             isAuthenticated={isAuthenticated}
           />
           <Route exact path="/login" component={LoginPage} />
-          <Route
-            exact
-            path="/password-recovery"
-            component={PasswordRecoveryPage}
-          />
           <Route exact path="/register" component={RegisterPage} />
           <PrivateRoute
             exact

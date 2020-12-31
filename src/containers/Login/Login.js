@@ -1,26 +1,24 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useAuthenticationContext } from '@/contexts/Authentication'
 import { Link } from 'react-router-dom'
 import { useNavigation } from '@/hooks'
-import { useLoader } from '@/contexts/Loader'
 import { LoginForm } from '@/components/LoginForm'
 import { AccessAreaContainer } from '@/components/AccessAreaContainer'
 import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import { PasswordRecoveryModal } from '@/components/PasswordRecoveryModal'
+import { useFormUtils } from './hooks/useFormUtils'
 
 export function LoginContainer() {
-  const { logIn, isAuthenticated } = useAuthenticationContext()
+  const [showModal, setShowModal] = useState(false)
+  const { isAuthenticated } = useAuthenticationContext()
   const { navigateTo } = useNavigation()
-  const { openLoader, closeLoader } = useLoader()
+  const { handleLogin, handlePasswordRecovery } = useFormUtils(setShowModal)
 
-  const handleLogin = useCallback(
-    async formData => {
-      const { email, password } = formData
-      openLoader()
-      await logIn(email, password)
-      closeLoader()
-    },
-    [openLoader, closeLoader, logIn]
-  )
+  const handleModal = useCallback(() => setShowModal(!showModal), [
+    setShowModal,
+    showModal
+  ])
 
   useEffect(() => {
     if (isAuthenticated()) navigateTo('/')
@@ -35,12 +33,17 @@ export function LoginContainer() {
         Acesse sua conta
       </Typography>
       <LoginForm onSubmit={handleLogin} />
-      <Typography gutterBottom>
-        <Link to="/password-recovery">Recuperar senha</Link>
+      <Typography>
+        <Button onClick={handleModal}>Recuperar senha</Button>
       </Typography>
       <Typography>
         <Link to="/register">Ainda não tem uma conta? Registre-se!</Link>
       </Typography>
+      <PasswordRecoveryModal
+        onSubmit={handlePasswordRecovery}
+        open={showModal}
+        handleClose={handleModal}
+      />
     </AccessAreaContainer>
   )
 }
