@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { customColors } from './customColors'
 
 import RobotLight from '@/assets/fonts/roboto-light-webfont.woff2'
 import RobotRegular from '@/assets/fonts/roboto-regular-webfont.woff2'
@@ -36,6 +37,8 @@ export const GlobalStyle = createGlobalStyle`
 
   body{
     font-family: 'Roboto';
+    background-color: ${customColors.body.light};
+    padding-top: 48px;
   }
 
   .MuiFormControl-root{
