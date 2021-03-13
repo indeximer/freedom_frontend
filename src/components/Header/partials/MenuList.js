@@ -1,17 +1,19 @@
 import React from 'react'
 import List from '@material-ui/core/List'
-import Divider from '@material-ui/core/Divider'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import { MenuWrapper } from './styles'
+import { UserInfo } from './UserInfo'
+import { HeroTitle } from './HeroTitle'
 
 export function MenuList() {
   return (
     <MenuWrapper>
+      <HeroTitle />
+      <UserInfo />
       <List>
-        <Divider />
         <ListItem>
           <ListItemIcon>
             <InboxIcon />
