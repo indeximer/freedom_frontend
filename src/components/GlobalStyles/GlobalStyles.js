@@ -38,7 +38,6 @@ export const GlobalStyle = createGlobalStyle`
   body{
     font-family: 'Roboto';
     background-color: ${customColors.body.light};
-    padding-top: 48px;
   }
 
   .MuiFormControl-root{

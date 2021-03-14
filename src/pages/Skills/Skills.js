@@ -1,6 +1,13 @@
 import React from 'react'
-import { SkillsList } from '@/components/SkillsList'
+import { Header } from '@/components/Header'
+import { SkillsContainer } from '@/containers/Skills'
+import { Container } from '@/components/Container'
 
 export function SkillsPage() {
-  return <SkillsList />
+  return (
+    <Container>
+      <Header pageTitle="Habilidades" showSearchBtn={true} />
+      <SkillsContainer />
+    </Container>
+  )
 }
