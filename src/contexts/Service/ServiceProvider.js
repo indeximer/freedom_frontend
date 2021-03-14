@@ -18,11 +18,18 @@ export function ServiceProvider({ children }) {
         const query = handleParams(db.collection(url), options)
         const response = await query.get()
         return mapDocs(response.docs)
-      } catch (e) {
-        return e
+      } catch (error) {
+        return error
       }
     },
-    post: '',
+    post: async (url, payload) => {
+      try {
+        const response = await db.collection(url).doc().set(payload)
+        return response
+      } catch (error) {
+        return error
+      }
+    },
     put: '',
     delete: ''
   }
