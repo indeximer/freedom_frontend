@@ -8,9 +8,9 @@ export function SkillsCreator() {
   const { createSkill } = useSkillsService()
   const { openLoader, closeLoader } = useLoader()
 
-  const sendSkills = useCallback(async () => {
+  const sendSkills = useCallback(() => {
     openLoader()
-    await skillsToCreate.map(async skill => {
+    skillsToCreate.map(async skill => {
       await createSkill(skill)
     })
     closeLoader()

@@ -1,9 +1,12 @@
 import React from 'react'
+import { Content } from '@/components/Content'
+import { SkillItem } from './partials/SkillItem'
 
 export function SkillsList({ skills }) {
   return (
-    <ul>
-      {skills && skills.map(skill => <li key={skill.id}>{skill.name}</li>)}
-    </ul>
+    <Content>
+      {skills &&
+        skills.map(skill => <SkillItem key={skill.id} skill={skill} />)}
+    </Content>
   )
 }
