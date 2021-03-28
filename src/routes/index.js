@@ -8,6 +8,8 @@ import { HomePage } from '@/pages/Home'
 import { LoginPage } from '@/pages/Login'
 import { RegisterPage } from '@/pages/Register'
 import { SkillsPage } from '@/pages/Skills'
+import { TechniquesPage } from '@/pages/Techniques'
+import { TechniqueCreatePage } from '@/pages/TechniqueCreate'
 
 export default function AppRouter() {
   const { isAuthenticated } = useAuthenticationContext()
@@ -28,6 +30,18 @@ export default function AppRouter() {
             exact
             path="/skills"
             component={SkillsPage}
+            isAuthenticated={isAuthenticated}
+          />
+          <PrivateRoute
+            exact
+            path="/techniques"
+            component={TechniquesPage}
+            isAuthenticated={isAuthenticated}
+          />
+          <PrivateRoute
+            exact
+            path="/techniques/create"
+            component={TechniqueCreatePage}
             isAuthenticated={isAuthenticated}
           />
           <Redirect to="/" />

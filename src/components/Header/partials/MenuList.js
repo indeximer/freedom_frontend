@@ -29,7 +29,7 @@ export function MenuList() {
           </ListItemIcon>
           <ListItemText primary="Habilidades" />
         </ListItem>
-        <ListItem>
+        <ListItem onClick={() => navigateTo('/techniques')}>
           <ListItemIcon>
             <InboxIcon />
           </ListItemIcon>
