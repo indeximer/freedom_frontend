@@ -16,7 +16,8 @@
   "homepage": "https://github.com/indeximer/freedom_frontend#readme",
   "scripts": {
     "start": "webpack serve --config ./webpack/webpack.dev.js",
-    "build": "webpack --config ./webpack/webpack.prod.js && echo $CONTEXT > /.env && echo '/* /index.html 200' | cat >dist/_redirects",
+    "scripts/create-env.js": "const fs = require('fs') fs.writeFileSync('./.env', process.env)",
+    "build": "node ./scripts/create-env.js && webpack --config ./webpack/webpack.prod.js &&  && echo '/* /index.html 200' | cat >dist/_redirects",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "husky": {
