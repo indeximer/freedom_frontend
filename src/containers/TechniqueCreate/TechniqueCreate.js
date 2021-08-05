@@ -3,7 +3,7 @@ import { useFormSubmit } from './hooks/useFormSubmit'
 import { TechniqueForm } from '@/components/TechniqueForm'
 
 export function TechniqueCreateContainer() {
-  const { createTechnique } = useFormSubmit()
+  const { submitTechnique } = useFormSubmit()
 
-  return <TechniqueForm onSubmit={createTechnique} />
+  return <TechniqueForm onSubmit={submitTechnique} />
 }

@@ -15,6 +15,11 @@ export function useValidation() {
         .required('A descrição é obrigatória'),
       related_skill: yup.string().required('Escolha uma técnica relacionada.'),
       effect: yup.string().required('Escolha um efeito.'),
+      power: yup.number(),
+      target: yup.number(),
+      range: yup.number(),
+      casting_time: yup.number(),
+      duration: yup.number(),
       restrictions: yup.number(),
       restriction_description: yup
         .string()

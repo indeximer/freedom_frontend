@@ -6,7 +6,7 @@ export function SliderFields() {
   const { register } = useFormContext()
   const fields = {
     power: 'power',
-    area: 'area',
+    target: 'target',
     range: 'range',
     castingTime: 'casting_time',
     duration: 'duration',
@@ -29,7 +29,7 @@ export function SliderFields() {
         min={-3}
         max={9}
         step={STEP}
-        name={fields.area}
+        name={fields.target}
         inputRef={register}
       />
       <SliderInput
