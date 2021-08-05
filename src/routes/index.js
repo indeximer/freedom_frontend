@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { PrivateRoute } from './partials/PrivateRoute'
 import { useAuthenticationContext } from '@/contexts/Authentication'
 import { ServiceProvider } from '@/contexts/Service'
+import { StoreProvider } from '@/contexts/Store'
 
 import { HomePage } from '@/pages/Home'
 import { LoginPage } from '@/pages/Login'
@@ -16,37 +17,39 @@ export default function AppRouter() {
 
   return (
     <ServiceProvider>
-      <BrowserRouter>
-        <Switch>
-          <PrivateRoute
-            exact
-            path="/"
-            component={HomePage}
-            isAuthenticated={isAuthenticated}
-          />
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/register" component={RegisterPage} />
-          <PrivateRoute
-            exact
-            path="/skills"
-            component={SkillsPage}
-            isAuthenticated={isAuthenticated}
-          />
-          <PrivateRoute
-            exact
-            path="/techniques"
-            component={TechniquesPage}
-            isAuthenticated={isAuthenticated}
-          />
-          <PrivateRoute
-            exact
-            path="/techniques/create"
-            component={TechniqueCreatePage}
-            isAuthenticated={isAuthenticated}
-          />
-          <Redirect to="/" />
-        </Switch>
-      </BrowserRouter>
+      <StoreProvider>
+        <BrowserRouter>
+          <Switch>
+            <PrivateRoute
+              exact
+              path="/"
+              component={HomePage}
+              isAuthenticated={isAuthenticated}
+            />
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/register" component={RegisterPage} />
+            <PrivateRoute
+              exact
+              path="/skills"
+              component={SkillsPage}
+              isAuthenticated={isAuthenticated}
+            />
+            <PrivateRoute
+              exact
+              path="/techniques"
+              component={TechniquesPage}
+              isAuthenticated={isAuthenticated}
+            />
+            <PrivateRoute
+              exact
+              path="/techniques/create"
+              component={TechniqueCreatePage}
+              isAuthenticated={isAuthenticated}
+            />
+            <Redirect to="/" />
+          </Switch>
+        </BrowserRouter>
+      </StoreProvider>
     </ServiceProvider>
   )
 }

@@ -1,17 +1,9 @@
-import React, { useCallback } from 'react'
-import { useLoader } from '@/contexts/Loader'
+import React from 'react'
+import { useFormSubmit } from './hooks/useFormSubmit'
 import { TechniqueForm } from '@/components/TechniqueForm'
 
 export function TechniqueCreateContainer() {
-  const { openLoader, closeLoader } = useLoader()
+  const { createTechnique } = useFormSubmit()
 
-  const handleSubmit = useCallback(
-    formData => {
-      openLoader()
-      console.log('###### SUBMIT!!!', formData)
-    },
-    [openLoader]
-  )
-
-  return <TechniqueForm onSubmit={handleSubmit} />
+  return <TechniqueForm onSubmit={createTechnique} />
 }

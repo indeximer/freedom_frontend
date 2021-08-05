@@ -2,10 +2,16 @@ import React from 'react'
 import { Select } from '@/components/Select'
 import TextField from '@material-ui/core/TextField'
 import { useFormContext } from 'react-hook-form'
+import { useStore } from '@/contexts/Store'
 
 export function TextFields() {
-  const skills = [{ value: 'magia', name: 'Magia' }]
   const { register, getError } = useFormContext()
+  const { store } = useStore()
+  const skills = store?.skills || []
+  const skillsOptions = skills.map(skill => ({
+    value: skill?.name,
+    name: skill?.name
+  }))
   const fields = {
     name: 'name',
     description: 'description',
@@ -37,7 +43,7 @@ export function TextFields() {
         inputRef={register}
       />
       <Select
-        options={skills}
+        options={skillsOptions}
         optionLabelAttr="name"
         label="Habilidade Relacionada"
         name={fields.relatedSkill}

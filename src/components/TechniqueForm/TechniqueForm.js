@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { Form } from './partials/Form'
 import { useValidation } from './hooks/useValidation'
 
-export function TechniqueForm({ onSubmit }) {
+export function TechniqueForm({ onSubmit, skills }) {
   const { validationResolver } = useValidation()
   const methods = useForm({ resolver: validationResolver })
   const { errors } = methods
