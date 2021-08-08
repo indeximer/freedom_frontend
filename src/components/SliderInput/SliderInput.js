@@ -6,7 +6,7 @@ import Input from '@material-ui/core/Input'
 
 import { SliderInputWrapper } from './styles'
 
-export function SliderInput({ label, min, max, step, ...rest }) {
+export function SliderInput({ label, min, max, step, inputRef, ...rest }) {
   const [value, setValue] = React.useState(0)
 
   const handleSliderChange = (event, newValue) => {
@@ -38,6 +38,7 @@ export function SliderInput({ label, min, max, step, ...rest }) {
             value={value}
             margin="dense"
             onChange={handleInputChange}
+            inputRef={inputRef}
             inputProps={{
               step: step,
               min: min,
@@ -45,6 +46,7 @@ export function SliderInput({ label, min, max, step, ...rest }) {
               type: 'number',
               'aria-labelledby': 'input-slider'
             }}
+            {...rest}
           />
         </Grid>
       </Grid>
