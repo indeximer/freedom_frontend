@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { StoreContext } from './StoreContext'
 import { useLoader } from '@/contexts/Loader'
-import { useSkillsService } from '@/services'
+import { useSkillsService, useTechniquesService } from '@/services'
 
 export function StoreProvider({ children }) {
   const [store, setStore] = useState({})
   const { getSkills } = useSkillsService()
+  const { getTechniques } = useTechniquesService()
   const { openLoader, closeLoader } = useLoader()
 
   useEffect(() => {
-    const loadSkills = async () => {
+    const loadData = async () => {
       openLoader()
       const skillsResponse = await getSkills()
-      setStore(store => ({ ...store, skills: skillsResponse }))
+      const techniquesResponse = await getTechniques()
+      setStore(store => ({
+        ...store,
+        skills: skillsResponse,
+        techniques: techniquesResponse
+      }))
       closeLoader()
     }
-    loadSkills()
-  }, [openLoader, closeLoader, setStore, getSkills])
+    loadData()
+  }, [openLoader, closeLoader, setStore, getSkills, getTechniques])
 
   return (
     <StoreContext.Provider value={{ store, setStore }}>
