@@ -14,3 +14,9 @@ export const StyledAvatar = styled(Avatar)`
   height: 30px;
   font-size: 1rem;
 `
+
+export const MenuWrapper = styled.div`
+  * {
+    z-index: 2;
+  }
+`
