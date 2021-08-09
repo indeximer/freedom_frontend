@@ -21,9 +21,9 @@ export function SkillItem({ skill }) {
       <Card>
         <CardHeader
           title={skill.name}
-          titleTypographyProps={{ variant: 'body1' }}
+          titleTypographyProps={{ variant: 'h6' }}
           subheader={skill.category}
-          subheaderTypographyProps={{ variant: 'caption' }}
+          subheaderTypographyProps={{ variant: 'subtitle2' }}
           action={
             <IconButton onClick={handleExpandClick}>
               <ExpandMoreIcon />
