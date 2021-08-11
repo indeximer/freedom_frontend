@@ -25,7 +25,7 @@ export function TechniqueItem({ technique }) {
         <CardHeader
           title={
             <TechniqueTitle>
-              {technique.name}{' '}
+              {technique.name}
               <StyledAvatar>{technique.difficulty}</StyledAvatar>
             </TechniqueTitle>
           }
