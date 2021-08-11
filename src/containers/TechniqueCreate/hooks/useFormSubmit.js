@@ -10,9 +10,7 @@ export function useFormSubmit() {
   const { openLoader, closeLoader } = useLoader()
   const { emitSuccessMessage } = useMessageEmitter()
   const { navigateTo } = useNavigation()
-  const {
-    user: { email }
-  } = useAuthenticationContext()
+  const { user } = useAuthenticationContext()
 
   const formatPayload = useCallback(
     formData => {
@@ -24,10 +22,15 @@ export function useFormSubmit() {
         formData.duration +
         formData.restrictions +
         formData.extras
-      const formattedPayload = { ...formData, difficulty, user: email }
+      const formattedPayload = {
+        ...formData,
+        difficulty,
+        user: user.uid,
+        created_at: Date.now()
+      }
       return formattedPayload
     },
-    [email]
+    [user]
   )
 
   const submitTechnique = useCallback(
@@ -35,8 +38,8 @@ export function useFormSubmit() {
       openLoader()
       await createTechnique(formatPayload(formData))
       closeLoader()
-      emitSuccessMessage('Sua técnica foi criada com sucesso!')
       navigateTo('/techniques')
+      emitSuccessMessage('Sua técnica foi criada com sucesso!')
     },
     [
       openLoader,

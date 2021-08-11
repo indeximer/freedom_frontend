@@ -9,10 +9,14 @@ import { useStore } from '@/contexts/Store'
 export function TechniquesContainer() {
   const { store } = useStore()
   const { navigateTo } = useNavigation()
+  const techniques = store?.techniques || []
+  const sortedTechniques = techniques.sort(
+    (a, b) => b.created_at - a.created_at
+  )
 
   return (
     <>
-      <TechniquesList techniques={store?.techniques} />
+      <TechniquesList techniques={sortedTechniques} />
       <FixedWrapper>
         <Fab color="primary" onClick={() => navigateTo('/techniques/create')}>
           <AddIcon />
