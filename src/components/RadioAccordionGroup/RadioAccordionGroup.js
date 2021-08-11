@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Grid, Typography } from '@material-ui/core'
 import { Content } from '@/components/Content'
 import { RadioItem } from './partials/RadioItem'
 
-export function RadioAccordionGroup({ label, items, inputRef, initialItem }) {
-  const [selectedItem, setSelectedItem] = useState(initialItem)
-
-  useEffect(() => {
-    if (selectedItem) return
-    setSelectedItem(initialItem)
-  }, [selectedItem, setSelectedItem, initialItem])
+export function RadioAccordionGroup({ label, items, inputRef }) {
+  const [selectedItem, setSelectedItem] = useState(items[0].value)
 
   const handleRadioChange = event => {
     event.stopPropagation()

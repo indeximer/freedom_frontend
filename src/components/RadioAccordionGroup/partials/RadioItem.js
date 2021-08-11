@@ -1,13 +1,13 @@
 import React from 'react'
 import {
   Grid,
-  Card,
   CardHeader,
   CardContent,
   Collapse,
   Typography
 } from '@material-ui/core'
 import Radio from '@material-ui/core/Radio'
+import { StyledCard } from './styles'
 
 export function RadioItem({
   item,
@@ -18,7 +18,11 @@ export function RadioItem({
 }) {
   return (
     <Grid item xs={12} sm={6} md={3}>
-      <Card onClick={() => setSelectedItem(item.value)} variant="outlined">
+      <StyledCard
+        onClick={() => setSelectedItem(item.value)}
+        variant="outlined"
+        checked={isChecked}
+      >
         <CardHeader
           title={item.label}
           titleTypographyProps={{ variant: 'body1' }}
@@ -39,7 +43,7 @@ export function RadioItem({
             <Typography variant="body2">{item.description}</Typography>
           </CardContent>
         </Collapse>
-      </Card>
+      </StyledCard>
     </Grid>
   )
 }

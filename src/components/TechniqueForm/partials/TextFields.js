@@ -10,7 +10,7 @@ import SettingsIcon from '@material-ui/icons/Settings'
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive'
 
 export function TextFields() {
-  const { register, getError, getValues, setValue } = useFormContext()
+  const { register, getError } = useFormContext()
   const { store } = useStore()
   const skills = store?.skills || []
   const skillsOptions = skills.map(skill => ({
@@ -23,7 +23,6 @@ export function TextFields() {
     relatedSkill: 'related_skill',
     effect: 'effect'
   }
-  setValue('effect', 'Ofensivo')
   const effects = [
     {
       value: 'Ofensivo',
@@ -95,12 +94,7 @@ export function TextFields() {
         error={!!getError(fields.effect)}
         inputRef={register}
       /> */}
-      <RadioAccordionGroup
-        label="Efeito"
-        items={effects}
-        inputRef={register}
-        initialItem={getValues(fields.effect)}
-      />
+      <RadioAccordionGroup label="Efeito" items={effects} inputRef={register} />
     </>
   )
 }
