@@ -7,9 +7,9 @@ import {
   Typography
 } from '@material-ui/core'
 import Radio from '@material-ui/core/Radio'
-import { StyledCard } from './styles'
+import { StyledCard } from '../styles'
 
-export function RadioItem({
+export function RadioCard({
   item,
   inputRef,
   handleChange,
@@ -19,7 +19,7 @@ export function RadioItem({
   return (
     <Grid item xs={12} sm={6} md={3}>
       <StyledCard
-        onClick={() => setSelectedItem(item.value)}
+        onClick={() => setSelectedItem(item.id)}
         variant="outlined"
         checked={isChecked}
       >

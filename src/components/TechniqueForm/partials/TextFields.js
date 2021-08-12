@@ -3,7 +3,7 @@ import { Select } from '@/components/Select'
 import TextField from '@material-ui/core/TextField'
 import { useFormContext } from 'react-hook-form'
 import { useStore } from '@/contexts/Store'
-import { RadioAccordionGroup } from '@/components/RadioAccordionGroup'
+import { RadioGroup } from '@/components/RadioGroup'
 import WhatshotIcon from '@material-ui/icons/Whatshot'
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital'
 import SettingsIcon from '@material-ui/icons/Settings'
@@ -25,6 +25,7 @@ export function TextFields() {
   }
   const effects = [
     {
+      id: 0,
       value: 'Ofensivo',
       label: 'Ofensivo',
       name: fields.effect,
@@ -33,6 +34,7 @@ export function TextFields() {
       icon: WhatshotIcon
     },
     {
+      id: 1,
       value: 'Melhoria',
       label: 'Melhoria',
       name: fields.effect,
@@ -41,6 +43,7 @@ export function TextFields() {
       icon: LocalHospitalIcon
     },
     {
+      id: 2,
       value: 'Dinâmico',
       label: 'Dinâmico',
       name: fields.effect,
@@ -49,6 +52,7 @@ export function TextFields() {
       icon: SettingsIcon
     },
     {
+      id: 3,
       value: 'Outros',
       label: 'Outros',
       name: fields.effect,
@@ -85,16 +89,8 @@ export function TextFields() {
         error={!!getError(fields.relatedSkill)}
         inputRef={register}
       />
-      {/* <Select
-        options={effects}
-        optionLabelAttr="value"
-        label="Efeito"
-        name={fields.effect}
-        helperText={getError(fields.effect)}
-        error={!!getError(fields.effect)}
-        inputRef={register}
-      /> */}
-      <RadioAccordionGroup label="Efeito" items={effects} inputRef={register} />
+
+      <RadioGroup label="Efeito" items={effects} inputRef={register} />
     </>
   )
 }

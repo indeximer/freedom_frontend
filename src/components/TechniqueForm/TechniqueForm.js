@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Form } from './partials/Form'
 import { useValidation } from './hooks/useValidation'
+import { Content } from '@/components/Content'
 
 export function TechniqueForm({ onSubmit }) {
   const { validationResolver } = useValidation()
@@ -12,8 +13,10 @@ export function TechniqueForm({ onSubmit }) {
     [errors]
   )
   return (
-    <FormProvider {...methods} getError={getError}>
-      <Form onSubmit={onSubmit} />
-    </FormProvider>
+    <Content gutterBot={true}>
+      <FormProvider {...methods} getError={getError}>
+        <Form onSubmit={onSubmit} />
+      </FormProvider>
+    </Content>
   )
 }
