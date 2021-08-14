@@ -11,6 +11,7 @@ export function SliderInput({
   max,
   step,
   inputRef,
+  name,
   onChange = () => null,
   ...rest
 }) {
@@ -18,12 +19,11 @@ export function SliderInput({
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue)
-    onChange(rest.name, Number(newValue))
+    onChange(name, Number(newValue))
   }
 
   const handleInputChange = event => {
     setValue(event.target.value === '' ? '' : Number(event.target.value))
-    onChange(rest.name, Number(event.target.value))
   }
 
   return (
@@ -39,6 +39,7 @@ export function SliderInput({
       />
       <Input
         value={value}
+        name={name}
         margin="dense"
         onChange={handleInputChange}
         inputRef={inputRef}

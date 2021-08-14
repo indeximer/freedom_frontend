@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { SliderInput } from '@/components/SliderInput'
 import { useFormContext } from 'react-hook-form'
 import { RadioGroup } from '@/components/RadioGroup'
@@ -9,9 +9,22 @@ export function PowerField() {
   const [effect, setEffect] = useState()
   const STEP = 3
 
-  useEffect(() => setEffect(watch(fields.effect)), [setEffect, watch])
+  const resetInputValue = useCallback(
+    newEffect => {
+      if (newEffect === 'Melhoria') setValue(fields.power, 6)
+      else setValue(fields.power, 0)
+    },
+    [setValue]
+  )
 
-  const EffectSlider = () => {
+  useEffect(() => {
+    const currentEffect = effect
+    const newEffect = watch(fields.effect)
+    setEffect(newEffect)
+    if (currentEffect !== newEffect) resetInputValue(newEffect)
+  }, [setEffect, watch, resetInputValue, effect])
+
+  const EffectSlider = useMemo(() => {
     return (
       <SliderInput
         label="Poder"
@@ -23,9 +36,9 @@ export function PowerField() {
         onChange={setValue}
       />
     )
-  }
+  }, [register, setValue])
 
-  const EffectRadio = () => {
+  const EffectRadio = useMemo(() => {
     return (
       <RadioGroup
         label="Poder"
@@ -36,7 +49,7 @@ export function PowerField() {
         onChange={setValue}
       />
     )
-  }
+  }, [setValue, register])
 
-  return effect && effect === 'Melhoria' ? <EffectRadio /> : <EffectSlider />
+  return effect && effect === 'Melhoria' ? EffectRadio : EffectSlider
 }
