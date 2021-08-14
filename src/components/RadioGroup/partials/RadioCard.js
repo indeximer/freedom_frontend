@@ -9,32 +9,20 @@ import {
 import Radio from '@material-ui/core/Radio'
 import { StyledCard } from '../styles'
 
-export function RadioCard({
-  item,
-  inputRef,
-  handleChange,
-  isChecked,
-  setSelectedItem
-}) {
+export function RadioCard({ item, inputRef, handleChange, isChecked }) {
   return (
     <Grid item xs={12} sm={6} md={3}>
-      <StyledCard
-        onClick={() => setSelectedItem(item.id)}
-        variant="outlined"
-        checked={isChecked}
-      >
+      <StyledCard onClick={handleChange} variant="outlined" checked={isChecked}>
         <CardHeader
           title={item.label}
           titleTypographyProps={{ variant: 'body1' }}
           avatar={<item.icon />}
           action={
             <Radio
-              onClick={e => e.stopPropagation()}
               checked={isChecked}
               name={item.name}
               value={item.value}
               inputRef={inputRef}
-              onChange={handleChange}
             />
           }
         />

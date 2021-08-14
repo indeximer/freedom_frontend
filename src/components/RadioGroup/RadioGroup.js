@@ -1,34 +1,34 @@
 import React, { useState } from 'react'
-import { Grid, Typography } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import { Content } from '@/components/Content'
 import { RadioCard } from './partials/RadioCard'
 import { RadioButton } from './partials/RadioButton'
-import { StyledLabel, StyledBadge } from './styles'
+import { Label } from '@/components/Label'
+import { getBadgeText } from './utils'
 
 export function RadioGroup({
   label,
   items,
   inputRef,
   initialItem = false,
+  onChange = () => null,
   type = 'card'
 }) {
   const initialItemState = initialItem === false ? items[0].id : initialItem
   const [selectedItem, setSelectedItem] = useState(initialItemState)
 
-  const handleRadioChange = (event, id) => {
-    event.stopPropagation()
-    setSelectedItem(id)
+  const handleRadioChange = item => {
+    setSelectedItem(item.id)
+    onChange(item.name, item.value)
   }
 
   return (
-    <Content>
+    <Content spacing={1}>
       <Grid item xs={12}>
-        <StyledLabel>
-          <Typography variant="h6">{label}</Typography>
-          <StyledBadge show={type !== 'card'}>
-            {items?.[`${selectedItem}`].value}
-          </StyledBadge>
-        </StyledLabel>
+        <Label
+          labelText={label}
+          badgeText={getBadgeText(type, items?.[`${selectedItem}`].value)}
+        />
       </Grid>
       {items &&
         items.map(item =>
@@ -38,8 +38,7 @@ export function RadioGroup({
               key={item.id}
               inputRef={inputRef}
               isChecked={selectedItem === item.id}
-              handleChange={event => handleRadioChange(event, item.id)}
-              setSelectedItem={setSelectedItem}
+              handleChange={() => handleRadioChange(item)}
             />
           ) : (
             <RadioButton
@@ -47,8 +46,7 @@ export function RadioGroup({
               key={item.id}
               inputRef={inputRef}
               isChecked={selectedItem === item.id}
-              handleChange={event => handleRadioChange(event, item.id)}
-              setSelectedItem={setSelectedItem}
+              handleChange={() => handleRadioChange(item)}
             />
           )
         )}
