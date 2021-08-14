@@ -3,30 +3,21 @@ import { Grid, Radio } from '@material-ui/core'
 
 import { StyledButton } from '../styles'
 
-export function RadioButton({
-  item,
-  inputRef,
-  handleChange,
-  isChecked,
-  setSelectedItem,
-  selectedItem
-}) {
+export function RadioButton({ item, inputRef, handleChange, isChecked }) {
   return (
     <Grid item>
       <StyledButton
         variant="outlined"
         size="small"
         checked={isChecked}
-        onClick={() => setSelectedItem(item.id)}
+        onClick={handleChange}
       >
         {item.label}
         <Radio
-          onClick={e => e.stopPropagation()}
           checked={isChecked}
           name={item.name}
           value={item.value}
           inputRef={inputRef}
-          onChange={handleChange}
         />
       </StyledButton>
     </Grid>

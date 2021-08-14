@@ -4,25 +4,22 @@ import TextField from '@material-ui/core/TextField'
 import { useFormContext } from 'react-hook-form'
 import { useStore } from '@/contexts/Store'
 import { RadioGroup } from '@/components/RadioGroup'
+import { Grid } from '@material-ui/core'
 import WhatshotIcon from '@material-ui/icons/Whatshot'
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital'
 import SettingsIcon from '@material-ui/icons/Settings'
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive'
+import { fields } from './constants'
 
 export function TextFields() {
-  const { register, getError } = useFormContext()
+  const { register, getError, setValue } = useFormContext()
   const { store } = useStore()
   const skills = store?.skills || []
   const skillsOptions = skills.map(skill => ({
     value: skill?.name,
     name: skill?.name
   }))
-  const fields = {
-    name: 'name',
-    description: 'description',
-    relatedSkill: 'related_skill',
-    effect: 'effect'
-  }
+
   const effects = [
     {
       id: 0,
@@ -64,14 +61,16 @@ export function TextFields() {
 
   return (
     <>
-      <TextField
-        variant="outlined"
-        name={fields.name}
-        helperText={getError(fields.name)}
-        error={!!getError(fields.name)}
-        label="Nome da técnica"
-        inputRef={register}
-      />
+      <Grid item>
+        <TextField
+          variant="outlined"
+          name={fields.name}
+          helperText={getError(fields.name)}
+          error={!!getError(fields.name)}
+          label="Nome da técnica"
+          inputRef={register}
+        />
+      </Grid>
       <TextField
         variant="outlined"
         name={fields.description}
@@ -89,8 +88,12 @@ export function TextFields() {
         error={!!getError(fields.relatedSkill)}
         inputRef={register}
       />
-
-      <RadioGroup label="Efeito" items={effects} inputRef={register} />
+      <RadioGroup
+        label="Efeito"
+        items={effects}
+        inputRef={register}
+        onChange={setValue}
+      />
     </>
   )
 }

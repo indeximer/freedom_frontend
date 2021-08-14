@@ -1,30 +1,22 @@
 import React from 'react'
-import { SliderInput } from '@/components/SliderInput'
 import { useFormContext } from 'react-hook-form'
 import { RadioGroup } from '@/components/RadioGroup'
-import { fields, targets, range, castingTime, duration } from './constants'
+import { targets, range, castingTime, duration } from './constants'
+import { PowerField } from './PowerField'
 
 export function SliderFields() {
-  const { register } = useFormContext()
-
-  const STEP = 3
+  const { register, setValue } = useFormContext()
 
   return (
     <>
-      <SliderInput
-        label="Poder"
-        min={0}
-        max={30}
-        step={STEP}
-        name={fields.power}
-        inputRef={register}
-      />
+      <PowerField />
       <RadioGroup
         label="Área de atuação"
         items={targets}
         inputRef={register}
         type="button"
         initialItem={2}
+        onChange={setValue}
       />
       <RadioGroup
         label="Alcance"
@@ -32,6 +24,7 @@ export function SliderFields() {
         inputRef={register}
         type="button"
         initialItem={0}
+        onChange={setValue}
       />
       <RadioGroup
         label="Tempo de execução"
@@ -39,6 +32,7 @@ export function SliderFields() {
         inputRef={register}
         type="button"
         initialItem={1}
+        onChange={setValue}
       />
       <RadioGroup
         label="Duração"
@@ -46,23 +40,7 @@ export function SliderFields() {
         inputRef={register}
         type="button"
         initialItem={0}
-      />
-
-      <SliderInput
-        label="Restrições"
-        min={-6}
-        max={0}
-        step={STEP}
-        name={fields.restrictions}
-        inputRef={register}
-      />
-      <SliderInput
-        label="Extras"
-        min={-6}
-        max={6}
-        step={STEP}
-        name={fields.extras}
-        inputRef={register}
+        onChange={setValue}
       />
     </>
   )

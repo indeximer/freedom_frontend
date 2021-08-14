@@ -1,13 +1,47 @@
 /* eslint-disable max-lines */
 export const fields = {
+  name: 'name',
+  description: 'description',
+  relatedSkill: 'related_skill',
+  effect: 'effect',
   power: 'power',
   target: 'target',
   range: 'range',
   castingTime: 'casting_time',
   duration: 'duration',
   restrictions: 'restrictions',
-  extras: 'extras'
+  extras: 'extras',
+  restrictionsDescription: 'restriction_description',
+  extrasDescription: 'extras_description',
+  difficulty: 'difficulty'
 }
+
+export const buffs = [
+  {
+    id: 0,
+    value: 6,
+    label: 'Melhoria',
+    name: fields.power
+  },
+  {
+    id: 1,
+    value: 12,
+    label: 'Melhoria considerável',
+    name: fields.power
+  },
+  {
+    id: 2,
+    value: 12,
+    label: 'Melhoria múltipla',
+    name: fields.power
+  },
+  {
+    id: 3,
+    value: 24,
+    label: 'Melhoria múltipla considerável',
+    name: fields.power
+  }
+]
 
 export const targets = [
   {

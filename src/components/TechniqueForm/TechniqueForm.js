@@ -3,6 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { Form } from './partials/Form'
 import { useValidation } from './hooks/useValidation'
 import { Content } from '@/components/Content'
+import { Grid } from '@material-ui/core'
 
 export function TechniqueForm({ onSubmit }) {
   const { validationResolver } = useValidation()
@@ -13,10 +14,12 @@ export function TechniqueForm({ onSubmit }) {
     [errors]
   )
   return (
-    <Content gutterBot={true}>
-      <FormProvider {...methods} getError={getError}>
-        <Form onSubmit={onSubmit} />
-      </FormProvider>
+    <Content gutterBot={60}>
+      <Grid item>
+        <FormProvider {...methods} getError={getError}>
+          <Form onSubmit={onSubmit} />
+        </FormProvider>
+      </Grid>
     </Content>
   )
 }

@@ -35,6 +35,11 @@ export const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 
+  body, html{
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
   body{
     font-family: 'Roboto';
     background-color: ${customColors.body.light};

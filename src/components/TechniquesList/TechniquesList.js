@@ -4,7 +4,7 @@ import { TechniqueItem } from './partials/TechniqueItem'
 
 export function TechniquesList({ techniques }) {
   return (
-    <Content gutterBot={true}>
+    <Content gutterBot={90}>
       {techniques &&
         techniques.map(technique => (
           <TechniqueItem key={technique.id} technique={technique} />

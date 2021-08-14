@@ -35,11 +35,12 @@ export function useFormSubmit() {
 
   const submitTechnique = useCallback(
     async formData => {
-      openLoader()
-      await createTechnique(formatPayload(formData))
-      closeLoader()
-      navigateTo('/techniques')
-      emitSuccessMessage('Sua técnica foi criada com sucesso!')
+      console.log(formData)
+      // openLoader()
+      // await createTechnique(formatPayload(formData))
+      // closeLoader()
+      // navigateTo('/techniques')
+      // emitSuccessMessage('Sua técnica foi criada com sucesso!')
     },
     [
       openLoader,
