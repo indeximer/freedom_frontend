@@ -7,9 +7,15 @@ import { ExtrasFields } from './ExtrasFields'
 import { TotalField } from './TotalField'
 import { Grid, Button } from '@material-ui/core'
 import CheckIcon from '@material-ui/icons/Check'
+import { fields } from './constants'
 
 export function Form({ onSubmit }) {
-  const { handleSubmit } = useFormContext()
+  const { handleSubmit, register } = useFormContext()
+  register(fields.powerDescription)
+  register(fields.targetDescription)
+  register(fields.rangeDescription)
+  register(fields.castingTimeDescription)
+  register(fields.durationDescription)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

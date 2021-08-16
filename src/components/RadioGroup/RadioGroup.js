@@ -19,7 +19,7 @@ export function RadioGroup({
 
   const handleRadioChange = item => {
     setSelectedItem(item.id)
-    onChange(item.name, item.value)
+    onChange(item)
   }
 
   return (

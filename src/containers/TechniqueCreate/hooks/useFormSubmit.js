@@ -14,19 +14,11 @@ export function useFormSubmit() {
 
   const formatPayload = useCallback(
     formData => {
-      const difficulty =
-        formData.power +
-        formData.target +
-        formData.range +
-        formData.casting_time +
-        formData.duration +
-        formData.restrictions +
-        formData.extras
       const formattedPayload = {
         ...formData,
-        difficulty,
         user: user.uid,
-        created_at: Date.now()
+        created_at: Date.now(),
+        updated_at: Date.now()
       }
       return formattedPayload
     },
@@ -35,11 +27,12 @@ export function useFormSubmit() {
 
   const submitTechnique = useCallback(
     async formData => {
-      openLoader()
-      await createTechnique(formatPayload(formData))
-      closeLoader()
-      navigateTo('/techniques')
-      emitSuccessMessage('Sua técnica foi criada com sucesso!')
+      console.log('CREATE PAYLOAD: ', formatPayload(formData))
+      // openLoader()
+      // await createTechnique(formatPayload(formData))
+      // closeLoader()
+      // navigateTo('/techniques')
+      // emitSuccessMessage('Sua técnica foi criada com sucesso!')
     },
     [
       openLoader,

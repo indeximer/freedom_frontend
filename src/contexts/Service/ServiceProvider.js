@@ -30,7 +30,15 @@ export function ServiceProvider({ children }) {
         return error
       }
     },
-    put: '',
+    put: async (url, payload) => {
+      try {
+        const [baseUrl, id] = checkUrlPath(url)
+        const response = await db.collection(baseUrl).doc(id).update(payload)
+        return response
+      } catch (error) {
+        return error
+      }
+    },
     delete: ''
   }
 

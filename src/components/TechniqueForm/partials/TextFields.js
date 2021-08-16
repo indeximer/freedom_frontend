@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Select } from '@/components/Select'
 import TextField from '@material-ui/core/TextField'
 import { useFormContext } from 'react-hook-form'
@@ -19,6 +19,13 @@ export function TextFields() {
     value: skill?.name,
     name: skill?.name
   }))
+
+  const handleChangeRadio = useCallback(
+    item => {
+      setValue(item.name, item?.value)
+    },
+    [setValue]
+  )
 
   const effects = [
     {
@@ -92,7 +99,7 @@ export function TextFields() {
         label="Efeito"
         items={effects}
         inputRef={register}
-        onChange={setValue}
+        onChange={handleChangeRadio}
       />
     </>
   )

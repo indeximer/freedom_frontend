@@ -42,6 +42,7 @@ export function TechniqueItem({ technique }) {
           open={open}
           handleClose={handleClose}
           anchorEl={anchorRef.current}
+          technique={technique}
         />
       </Card>
     </Grid>

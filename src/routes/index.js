@@ -11,6 +11,7 @@ import { RegisterPage } from '@/pages/Register'
 import { SkillsPage } from '@/pages/Skills'
 import { TechniquesPage } from '@/pages/Techniques'
 import { TechniqueCreatePage } from '@/pages/TechniqueCreate'
+import { TechniqueEditPage } from '@/pages/TechniqueEdit'
 
 export default function AppRouter() {
   const { isAuthenticated } = useAuthenticationContext()
@@ -44,6 +45,12 @@ export default function AppRouter() {
               exact
               path="/techniques/create"
               component={TechniqueCreatePage}
+              isAuthenticated={isAuthenticated}
+            />
+            <PrivateRoute
+              exact
+              path="/techniques/edit/:id"
+              component={TechniqueEditPage}
               isAuthenticated={isAuthenticated}
             />
             <Redirect to="/" />

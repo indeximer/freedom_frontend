@@ -3,16 +3,30 @@ import { SliderInput } from '@/components/SliderInput'
 import { useFormContext } from 'react-hook-form'
 import { RadioGroup } from '@/components/RadioGroup'
 import { fields, buffs } from './constants'
+import { getIdByDescription } from './utils'
+
+const getInitialItem = getValues => {
+  return getIdByDescription(buffs, getValues('power_description')) || 0
+}
 
 export function PowerField() {
-  const { register, watch, setValue } = useFormContext()
+  const { register, watch, setValue, getValues } = useFormContext()
   const [effect, setEffect] = useState()
   const STEP = 3
+  const initialItem = getInitialItem(getValues)
 
   const resetInputValue = useCallback(
     newEffect => {
       if (newEffect === 'Melhoria') setValue(fields.power, 6)
       else setValue(fields.power, 0)
+    },
+    [setValue]
+  )
+
+  const handleChangeRadio = useCallback(
+    item => {
+      setValue(item.name, item?.value)
+      setValue(`${item.name}_description`, item.label)
     },
     [setValue]
   )
@@ -45,11 +59,11 @@ export function PowerField() {
         items={buffs}
         inputRef={register}
         type="button"
-        initialItem={0}
-        onChange={setValue}
+        initialItem={initialItem}
+        onChange={handleChangeRadio}
       />
     )
-  }, [setValue, register])
+  }, [register, handleChangeRadio, initialItem])
 
   return effect && effect === 'Melhoria' ? EffectRadio : EffectSlider
 }

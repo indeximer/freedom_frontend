@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@/hooks/useNavigation'
 import {
   Popper,
   Grow,
@@ -12,7 +13,13 @@ import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { MenuWrapper } from './styles'
 
-export function TechniqueMenu({ open, handleClose, anchorEl }) {
+export function TechniqueMenu({ open, handleClose, anchorEl, technique }) {
+  const { navigateTo } = useNavigation()
+  const handleEditClick = () => {
+    navigateTo(`/techniques/edit/${technique.id}`)
+    handleClose()
+  }
+
   return (
     <MenuWrapper>
       <Popper
@@ -33,7 +40,7 @@ export function TechniqueMenu({ open, handleClose, anchorEl }) {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList autoFocusItem={open}>
-                  <MenuItem onClick={handleClose}>
+                  <MenuItem onClick={handleEditClick}>
                     <ListItemIcon>
                       <EditIcon />
                     </ListItemIcon>

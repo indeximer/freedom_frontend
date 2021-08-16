@@ -11,6 +11,7 @@ export function TotalField() {
     const totalDifficulty =
       parseInt(watch(fields.power)) +
       parseInt(watch(fields.target)) +
+      parseInt(watch(fields.range)) +
       parseInt(watch(fields.castingTime)) +
       parseInt(watch(fields.duration)) +
       parseInt(watch(fields.restrictions)) +

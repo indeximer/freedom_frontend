@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { RadioGroup } from '@/components/RadioGroup'
 import { targets, range, castingTime, duration } from './constants'
 import { PowerField } from './PowerField'
+import { getIdByDescription } from './utils'
 
 export function SliderFields() {
-  const { register, setValue } = useFormContext()
+  const { register, setValue, getValues } = useFormContext()
+  const values = getValues()
+
+  const handleChangeRadio = useCallback(
+    item => {
+      setValue(item.name, item?.value)
+      setValue(`${item.name}_description`, item.label)
+    },
+    [setValue]
+  )
 
   return (
     <>
@@ -15,32 +25,35 @@ export function SliderFields() {
         items={targets}
         inputRef={register}
         type="button"
-        initialItem={2}
-        onChange={setValue}
+        initialItem={getIdByDescription(targets, values.target_description)}
+        onChange={handleChangeRadio}
       />
       <RadioGroup
         label="Alcance"
         items={range}
         inputRef={register}
         type="button"
-        initialItem={0}
-        onChange={setValue}
+        initialItem={getIdByDescription(range, values.range_description)}
+        onChange={handleChangeRadio}
       />
       <RadioGroup
         label="Tempo de execução"
         items={castingTime}
         inputRef={register}
         type="button"
-        initialItem={1}
-        onChange={setValue}
+        initialItem={getIdByDescription(
+          castingTime,
+          values.casting_time_description
+        )}
+        onChange={handleChangeRadio}
       />
       <RadioGroup
         label="Duração"
         items={duration}
         inputRef={register}
         type="button"
-        initialItem={0}
-        onChange={setValue}
+        initialItem={getIdByDescription(duration, values.duration_description)}
+        onChange={handleChangeRadio}
       />
     </>
   )
