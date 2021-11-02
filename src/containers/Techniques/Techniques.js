@@ -11,7 +11,7 @@ export function TechniquesContainer() {
   const { navigateTo } = useNavigation()
   const techniques = store?.techniques || []
   const sortedTechniques = techniques.sort(
-    (a, b) => b.created_at - a.created_at
+    (a, b) => b.updated_at - a.updated_at
   )
 
   return (

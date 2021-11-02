@@ -7,6 +7,14 @@ export function useTechniquesService() {
 
   return useMemo(() => {
     return {
+      getTechniqueById: async id => {
+        try {
+          const response = await client.get(`${URL}/${id}`)
+          return response
+        } catch (error) {
+          alert(error)
+        }
+      },
       getTechniques: async () => {
         try {
           const response = await client.get(URL)
@@ -18,6 +26,14 @@ export function useTechniquesService() {
       createTechnique: async payload => {
         try {
           const response = await client.post(URL, payload)
+          return response
+        } catch (error) {
+          alert(error)
+        }
+      },
+      updateTechnique: async (id, payload) => {
+        try {
+          const response = await client.post(`${URL}/${id}`, payload)
           return response
         } catch (error) {
           alert(error)

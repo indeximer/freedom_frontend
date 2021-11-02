@@ -1,43 +1,37 @@
 import { useCallback } from 'react'
 import { useLoader } from '@/contexts/Loader'
-import { useAuthenticationContext } from '@/contexts/Authentication'
 import { useMessageEmitter } from '@/contexts/MessageEmitter'
 import { useNavigation } from '@/hooks'
 import { useTechniquesService } from '@/services'
 
 export function useFormSubmit() {
-  const { createTechnique } = useTechniquesService()
+  const { updateTechnique } = useTechniquesService()
   const { openLoader, closeLoader } = useLoader()
   const { emitSuccessMessage } = useMessageEmitter()
   const { navigateTo } = useNavigation()
-  const { user } = useAuthenticationContext()
 
-  const formatPayload = useCallback(
-    formData => {
-      const formattedPayload = {
-        ...formData,
-        user: user.uid,
-        created_at: Date.now(),
-        updated_at: Date.now()
-      }
-      return formattedPayload
-    },
-    [user]
-  )
+  const formatPayload = useCallback(formData => {
+    const formattedPayload = {
+      ...formData,
+      updated_at: Date.now()
+    }
+    delete formattedPayload.id
+    return formattedPayload
+  }, [])
 
   const submitTechnique = useCallback(
     async formData => {
       openLoader()
-      await createTechnique(formatPayload(formData))
+      await updateTechnique(formData.id, formatPayload(formData))
       closeLoader()
       navigateTo('/techniques')
-      emitSuccessMessage('Sua técnica foi criada com sucesso!')
+      emitSuccessMessage('Sua técnica foi alterada com sucesso!')
     },
     [
       openLoader,
       closeLoader,
       formatPayload,
-      createTechnique,
+      updateTechnique,
       emitSuccessMessage,
       navigateTo
     ]

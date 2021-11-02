@@ -21,6 +21,8 @@ export function ExtrasFields() {
       />
       <TextField
         variant="outlined"
+        multiline
+        minRows={3}
         name={fields.restrictionsDescription}
         helperText={getError(fields.restrictionsDescription)}
         error={!!getError(fields.restrictionsDescription)}
@@ -38,6 +40,8 @@ export function ExtrasFields() {
       />
       <TextField
         variant="outlined"
+        multiline
+        minRows={3}
         name={fields.extrasDescription}
         helperText={getError(fields.extrasDescription)}
         error={!!getError(fields.extrasDescription)}

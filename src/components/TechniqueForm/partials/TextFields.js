@@ -1,24 +1,28 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Select } from '@/components/Select'
 import TextField from '@material-ui/core/TextField'
 import { useFormContext } from 'react-hook-form'
 import { useStore } from '@/contexts/Store'
 import { RadioGroup } from '@/components/RadioGroup'
-import { Grid } from '@material-ui/core'
 import WhatshotIcon from '@material-ui/icons/Whatshot'
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital'
 import SettingsIcon from '@material-ui/icons/Settings'
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive'
 import { fields } from './constants'
+import { getIdByDescription, getDefaultValue } from './utils'
 
 export function TextFields() {
-  const { register, getError, setValue } = useFormContext()
+  const { register, getError, setValue, data } = useFormContext()
   const { store } = useStore()
   const skills = store?.skills || []
-  const skillsOptions = skills.map(skill => ({
-    value: skill?.name,
-    name: skill?.name
-  }))
+  const skillsOptions = skills.map(skill => skill?.name)
+
+  const handleChangeRadio = useCallback(
+    item => {
+      setValue(item.name, item?.value)
+    },
+    [setValue]
+  )
 
   const effects = [
     {
@@ -61,38 +65,43 @@ export function TextFields() {
 
   return (
     <>
-      <Grid item>
-        <TextField
-          variant="outlined"
-          name={fields.name}
-          helperText={getError(fields.name)}
-          error={!!getError(fields.name)}
-          label="Nome da técnica"
-          inputRef={register}
-        />
-      </Grid>
       <TextField
         variant="outlined"
+        type="text"
+        name={fields.name}
+        helperText={getError(fields.name)}
+        error={!!getError(fields.name)}
+        label="Nome da técnica"
+        inputRef={register}
+        defaultValue={getDefaultValue(fields.name, data)}
+      />
+      <TextField
+        variant="outlined"
+        multiline
+        minRows={3}
         name={fields.description}
         helperText={getError(fields.description)}
         error={!!getError(fields.description)}
         label="Descrição"
         inputRef={register}
+        defaultValue={getDefaultValue(fields.description, data)}
       />
       <Select
         options={skillsOptions}
-        optionLabelAttr="name"
+        freeSolo={true}
         label="Habilidade Relacionada"
         name={fields.relatedSkill}
         helperText={getError(fields.relatedSkill)}
         error={!!getError(fields.relatedSkill)}
+        value={getDefaultValue(fields.relatedSkill, data)}
         inputRef={register}
       />
       <RadioGroup
         label="Efeito"
         items={effects}
         inputRef={register}
-        onChange={setValue}
+        onChange={handleChangeRadio}
+        initialItem={getIdByDescription(effects, data?.effect)}
       />
     </>
   )

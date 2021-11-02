@@ -18,6 +18,7 @@ export function RadioButton({ item, inputRef, handleChange, isChecked }) {
           name={item.name}
           value={item.value}
           inputRef={inputRef}
+          onChange={handleChange}
         />
       </StyledButton>
     </Grid>
