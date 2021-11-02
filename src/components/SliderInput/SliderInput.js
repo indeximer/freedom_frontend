@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Label } from '@/components/Label'
 import Slider from '@material-ui/core/Slider'
 import Input from '@material-ui/core/Input'
@@ -12,14 +12,18 @@ export function SliderInput({
   step,
   inputRef,
   name,
+  show,
+  defaultValue = 0,
   onChange = () => null,
   ...rest
 }) {
   const [value, setValue] = useState(0)
+  useEffect(() => setValue(defaultValue), [setValue, defaultValue])
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue)
-    onChange(name, Number(newValue))
+    if (name) onChange(name, Number(newValue))
+    else onChange(Number(newValue))
   }
 
   const handleInputChange = event => {
@@ -27,7 +31,7 @@ export function SliderInput({
   }
 
   return (
-    <SliderInputWrapper>
+    <SliderInputWrapper show={show}>
       <Label labelText={label} badgeText={value} />
       <Slider
         value={typeof value === 'number' ? value : 0}

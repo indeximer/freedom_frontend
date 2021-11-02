@@ -2,6 +2,10 @@ import styled, { css } from 'styled-components'
 import { Card, Button } from '@material-ui/core'
 import { indigo } from '@material-ui/core/colors'
 
+export const RadioGroupWrapper = styled.div`
+  display: ${({ show = true }) => (show ? 'block' : 'none')};
+`
+
 export const StyledCard = styled(Card)`
   border: 1px solid rgba(0, 0, 0, 0.2);
   cursor: pointer;

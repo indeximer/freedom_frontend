@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createTheme } from '@material-ui/core/styles'
 
-const theme = createMuiTheme()
+const theme = createTheme()
 
 export const MenuWrapper = styled.div`
   width: 300px;

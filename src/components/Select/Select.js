@@ -1,22 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
 export function Select({
   options,
-  optionLabelAttr,
   label,
   name,
   inputRef,
   error,
-  helperText
+  helperText,
+  value
 }) {
-  const [value, setValue] = useState('')
+  const [selectValue, setValue] = useState('')
   const [inputValue, setInputValue] = useState('')
+
+  useEffect(() => {
+    if (value) setValue(value)
+  }, [value, setValue])
 
   return (
     <Autocomplete
-      value={value}
+      value={selectValue}
       onChange={(event, newValue) => {
         setValue(newValue)
       }}
@@ -25,7 +29,6 @@ export function Select({
         setInputValue(newInputValue)
       }}
       options={options}
-      getOptionLabel={option => option?.[`${optionLabelAttr}`] || ''}
       renderInput={params => (
         <TextField
           {...params}
@@ -35,6 +38,7 @@ export function Select({
           helperText={helperText}
           error={error}
           inputRef={inputRef}
+          value="Magia"
         />
       )}
     />

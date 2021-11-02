@@ -11,6 +11,7 @@ import { fields } from './constants'
 
 export function Form({ onSubmit }) {
   const { handleSubmit, register } = useFormContext()
+  register(fields.power)
   register(fields.powerDescription)
   register(fields.targetDescription)
   register(fields.rangeDescription)

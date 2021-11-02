@@ -13,23 +13,28 @@ import {
   castingTime
 } from './partials/constants'
 
-export function TechniqueForm({ onSubmit, technique = {} }) {
+export function TechniqueForm({ onSubmit, technique = false }) {
   const { validationResolver } = useValidation()
+
+  const initialValues = technique || {
+    [fields.power]: 0,
+    [fields.powerDescription]: buffs[0].label,
+    [fields.targetDescription]: targets[2].label,
+    [fields.rangeDescription]: range[0].label,
+    [fields.castingTimeDescription]: castingTime[1].label,
+    [fields.durationDescription]: duration[0].label
+  }
+
   const methods = useForm({
     resolver: validationResolver,
-    defaultValues: {
-      [fields.powerDescription]: buffs[0].label,
-      [fields.targetDescription]: targets[2].label,
-      [fields.rangeDescription]: range[0].label,
-      [fields.castingTimeDescription]: castingTime[1].label,
-      [fields.durationDescription]: duration[0].label
-    }
+    defaultValues: initialValues
   })
   const { errors } = methods
   const getError = useCallback(
     fieldName => errors[`${fieldName}`]?.message || false,
     [errors]
   )
+
   return (
     <Content gutterBot={60}>
       <Grid item>
