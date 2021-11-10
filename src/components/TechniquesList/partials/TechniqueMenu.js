@@ -10,13 +10,22 @@ import {
   ListItemIcon
 } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
+import LinkIcon from '@material-ui/icons/Link'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { MenuWrapper } from './styles'
 
 export function TechniqueMenu({ open, handleClose, anchorEl, technique }) {
   const { navigateTo } = useNavigation()
+  const baseUrl = window.location.hostname
+  const techniquePath = `/techniques/edit/${technique.id}`
+
   const handleEditClick = () => {
-    navigateTo(`/techniques/edit/${technique.id}`)
+    navigateTo(techniquePath)
+    handleClose()
+  }
+
+  const copyLink = () => {
+    navigator.clipboard.writeText(`${baseUrl}/techniques/edit/${technique.id}`)
     handleClose()
   }
 
@@ -45,6 +54,12 @@ export function TechniqueMenu({ open, handleClose, anchorEl, technique }) {
                       <EditIcon />
                     </ListItemIcon>
                     Editar
+                  </MenuItem>
+                  <MenuItem onClick={copyLink}>
+                    <ListItemIcon>
+                      <LinkIcon />
+                    </ListItemIcon>
+                    Copiar Link
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
                     <ListItemIcon>

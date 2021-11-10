@@ -3,12 +3,14 @@ import { useLoader } from '@/contexts/Loader'
 import { useMessageEmitter } from '@/contexts/MessageEmitter'
 import { useNavigation } from '@/hooks'
 import { useTechniquesService } from '@/services'
+import { useParams } from 'react-router-dom'
 
 export function useFormSubmit() {
   const { updateTechnique } = useTechniquesService()
   const { openLoader, closeLoader } = useLoader()
   const { emitSuccessMessage } = useMessageEmitter()
   const { navigateTo } = useNavigation()
+  const { id } = useParams()
 
   const formatPayload = useCallback(formData => {
     const formattedPayload = {
@@ -22,7 +24,7 @@ export function useFormSubmit() {
   const submitTechnique = useCallback(
     async formData => {
       openLoader()
-      await updateTechnique(formData.id, formatPayload(formData))
+      await updateTechnique(id, formatPayload(formData))
       closeLoader()
       navigateTo('/techniques')
       emitSuccessMessage('Sua técnica foi alterada com sucesso!')
@@ -33,7 +35,8 @@ export function useFormSubmit() {
       formatPayload,
       updateTechnique,
       emitSuccessMessage,
-      navigateTo
+      navigateTo,
+      id
     ]
   )
   return { submitTechnique }
