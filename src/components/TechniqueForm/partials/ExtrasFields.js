@@ -5,7 +5,7 @@ import { SliderInput } from '@/components/SliderInput'
 import { fields } from './constants'
 
 export function ExtrasFields() {
-  const { register, getError, setValue } = useFormContext()
+  const { register, getError, setValue, data } = useFormContext()
   const STEP = 3
 
   return (
@@ -18,6 +18,7 @@ export function ExtrasFields() {
         name={fields.restrictions}
         inputRef={register}
         onChange={setValue}
+        defaultValue={data?.restrictions}
       />
       <TextField
         variant="outlined"
@@ -37,6 +38,7 @@ export function ExtrasFields() {
         name={fields.extras}
         inputRef={register}
         onChange={setValue}
+        defaultValue={data?.extras}
       />
       <TextField
         variant="outlined"

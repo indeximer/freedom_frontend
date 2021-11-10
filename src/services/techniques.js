@@ -33,7 +33,7 @@ export function useTechniquesService() {
       },
       updateTechnique: async (id, payload) => {
         try {
-          const response = await client.post(`${URL}/${id}`, payload)
+          const response = await client.put(`${URL}/${id}`, payload)
           return response
         } catch (error) {
           alert(error)
