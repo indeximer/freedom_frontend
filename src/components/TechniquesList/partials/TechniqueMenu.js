@@ -16,7 +16,7 @@ import { MenuWrapper } from './styles'
 
 export function TechniqueMenu({ open, handleClose, anchorEl, technique }) {
   const { navigateTo } = useNavigation()
-  const baseUrl = window.location.hostname
+  const baseUrl = `${window.location.protocol}//${window.location.hostname}`
   const techniquePath = `/techniques/edit/${technique.id}`
 
   const handleEditClick = () => {
