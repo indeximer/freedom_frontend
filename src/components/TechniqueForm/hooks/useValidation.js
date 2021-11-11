@@ -7,11 +7,11 @@ export function useValidation() {
     const schema = yup.object().shape({
       name: yup
         .string()
-        .max(80, 'Máximo de 200 caracteres permitidos.')
+        .max(200, 'Máximo de 200 caracteres permitidos.')
         .required('O nome da técnica é obrigatório'),
       description: yup
         .string()
-        .max(200, 'Máximo de 1000 caracteres permitidos.')
+        .max(1000, 'Máximo de 1000 caracteres permitidos.')
         .required('A descrição é obrigatória'),
       related_skill: yup.string().required('Escolha uma técnica relacionada.'),
       effect: yup.string().required('Escolha um efeito.'),
