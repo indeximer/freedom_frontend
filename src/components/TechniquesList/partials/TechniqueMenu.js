@@ -29,6 +29,11 @@ export function TechniqueMenu({ open, handleClose, anchorEl, technique }) {
     handleClose()
   }
 
+  const handleDeleteClick = () => {
+    technique.delete()
+    handleClose()
+  }
+
   return (
     <MenuWrapper>
       <Popper
@@ -61,7 +66,7 @@ export function TechniqueMenu({ open, handleClose, anchorEl, technique }) {
                     </ListItemIcon>
                     Copiar Link
                   </MenuItem>
-                  <MenuItem onClick={handleClose}>
+                  <MenuItem onClick={handleDeleteClick}>
                     <ListItemIcon>
                       <DeleteIcon />
                     </ListItemIcon>

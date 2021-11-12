@@ -39,7 +39,15 @@ export function ServiceProvider({ children }) {
         return error
       }
     },
-    delete: ''
+    delete: async url => {
+      try {
+        const [baseUrl, id] = checkUrlPath(url)
+        const response = await db.collection(baseUrl).doc(id).delete()
+        return response
+      } catch (error) {
+        return error
+      }
+    }
   }
 
   return (

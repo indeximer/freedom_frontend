@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { StoreContext } from './StoreContext'
 import { useLoader } from '@/contexts/Loader'
 import { useSkillsService, useTechniquesService } from '@/services'
@@ -9,23 +9,24 @@ export function StoreProvider({ children }) {
   const { getTechniques } = useTechniquesService()
   const { openLoader, closeLoader } = useLoader()
 
+  const loadStore = useCallback(async () => {
+    openLoader()
+    const skillsResponse = await getSkills()
+    const techniquesResponse = await getTechniques()
+    setStore(store => ({
+      ...store,
+      skills: skillsResponse,
+      techniques: techniquesResponse
+    }))
+    closeLoader()
+  }, [openLoader, closeLoader, getSkills, getTechniques])
+
   useEffect(() => {
-    const loadData = async () => {
-      openLoader()
-      const skillsResponse = await getSkills()
-      const techniquesResponse = await getTechniques()
-      setStore(store => ({
-        ...store,
-        skills: skillsResponse,
-        techniques: techniquesResponse
-      }))
-      closeLoader()
-    }
-    loadData()
-  }, [openLoader, closeLoader, setStore, getSkills, getTechniques])
+    loadStore()
+  }, [loadStore])
 
   return (
-    <StoreContext.Provider value={{ store, setStore }}>
+    <StoreContext.Provider value={{ store, setStore, loadStore }}>
       {children}
     </StoreContext.Provider>
   )

@@ -38,6 +38,14 @@ export function useTechniquesService() {
         } catch (error) {
           alert(error)
         }
+      },
+      deleteTechnique: async (id, payload) => {
+        try {
+          const response = await client.delete(`${URL}/${id}`)
+          return response
+        } catch (error) {
+          alert(error)
+        }
       }
     }
   }, [client])
