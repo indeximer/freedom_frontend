@@ -1,13 +1,11 @@
 import React, { useState, useCallback } from 'react'
-import Fab from '@material-ui/core/Fab'
-import AddIcon from '@material-ui/icons/Add'
 import { TechniquesList } from '@/components/TechniquesList'
 import { ConfirmationModal } from '@/components/ConfirmationModal'
-import { FixedWrapper } from './styles'
 import { useNavigation } from '@/hooks'
 import { useStore } from '@/contexts/Store'
 import { useTechniquesService } from '@/services/techniques'
 import { useLoader } from '@/contexts/Loader'
+import { FixedAddButton } from '@/components'
 
 export function TechniquesContainer() {
   const [openModal, setOpenModal] = useState(false)
@@ -48,11 +46,7 @@ export function TechniquesContainer() {
   return (
     <>
       <TechniquesList techniques={sortedTechniques} />
-      <FixedWrapper>
-        <Fab color="primary" onClick={() => navigateTo('/techniques/create')}>
-          <AddIcon />
-        </Fab>
-      </FixedWrapper>
+      <FixedAddButton onClick={() => navigateTo('/techniques/create')} />
       <ConfirmationModal
         open={openModal}
         title="Tem certeza de que deseja deletar a técnica?"

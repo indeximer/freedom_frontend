@@ -4,7 +4,7 @@ import { SkillItem } from './partials/SkillItem'
 
 export function SkillsList({ skills }) {
   return (
-    <Content>
+    <Content gutterBot={90}>
       {skills &&
         skills.map(skill => <SkillItem key={skill.id} skill={skill} />)}
     </Content>
