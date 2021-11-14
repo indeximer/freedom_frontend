@@ -6,6 +6,7 @@ import { useStore } from '@/contexts/Store'
 import { useTechniquesService } from '@/services/techniques'
 import { useLoader } from '@/contexts/Loader'
 import { FixedAddButton } from '@/components'
+import { orderBy } from '@/utils'
 
 export function TechniquesContainer() {
   const [openModal, setOpenModal] = useState(false)
@@ -37,7 +38,8 @@ export function TechniquesContainer() {
   }
 
   const sortedTechniques = techniques
-    .sort((a, b) => b.updated_at - a.updated_at)
+    .sort((a, b) => orderBy(a, b, 'updated_at'))
+    .reverse()
     .map(item => ({
       ...item,
       delete: () => handleOpenModal(item.id)

@@ -14,12 +14,12 @@ export function Form({ onSubmit }) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <TextField
         variant="outlined"
-        label="Nome"
+        label="Nickname"
         name={PATH_DISPLAY_NAME}
         error={getError(PATH_DISPLAY_NAME)}
         helperText={
           getError(PATH_DISPLAY_NAME) ||
-          'Inform o nome pelo gostaria de ser reconhecido.'
+          'Informe o nome pelo qual gostaria de ser reconhecido.'
         }
         inputRef={register}
       />

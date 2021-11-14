@@ -22,6 +22,14 @@ export function useSkillsService() {
         } catch (error) {
           alert(error)
         }
+      },
+      updateSkill: async (id, payload) => {
+        try {
+          const response = await client.put(`${URL}/${id}`, payload)
+          return response
+        } catch (error) {
+          alert(error)
+        }
       }
     }
   }, [client])

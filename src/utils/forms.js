@@ -7,3 +7,13 @@ export const formatPostPayload = (formData, user) => {
   }
   return formattedPayload
 }
+
+export const formatPutPayload = (formData, user) => {
+  const formattedPayload = {
+    ...formData,
+    updated_at: Date.now()
+  }
+
+  delete formatPostPayload?.id
+  return formattedPayload
+}
