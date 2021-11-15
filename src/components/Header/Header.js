@@ -5,20 +5,36 @@ import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import SearchIcon from '@material-ui/icons/Search'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import FilterListIcon from '@material-ui/icons/FilterList'
 import { Spacer } from './styles'
 import { Menu } from './partials/Menu'
+import { useNavigation } from '@/hooks'
 
 export function Header({
   pageTitle,
   showFilterBtn = false,
-  showSearchBtn = false
+  showSearchBtn = false,
+  backBtnPath = false
 }) {
   const [openMenu, setOpenMenu] = useState(false)
+  const { navigateTo } = useNavigation()
   const handleMenu = useCallback(() => setOpenMenu(!openMenu), [
     setOpenMenu,
     openMenu
   ])
+
+  const BackButton = () => {
+    return backBtnPath ? (
+      <IconButton
+        edge="end"
+        color="inherit"
+        onClick={() => navigateTo(backBtnPath)}
+      >
+        <ArrowBackIcon />
+      </IconButton>
+    ) : null
+  }
 
   return (
     <>
@@ -39,6 +55,7 @@ export function Header({
               <SearchIcon />
             </IconButton>
           )}
+          <BackButton />
         </Toolbar>
       </AppBar>
       <Menu open={openMenu} handleMenu={handleMenu} />

@@ -6,7 +6,7 @@ import { TechniqueEditContainer } from '@/containers/TechniqueEdit'
 export function TechniqueEditPage() {
   return (
     <Container>
-      <Header pageTitle="Editar Técnica" />
+      <Header pageTitle="Editar Técnica" backBtnPath="/techniques" />
       <TechniqueEditContainer />
     </Container>
   )
