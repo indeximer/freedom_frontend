@@ -5,6 +5,8 @@ export const formatPostPayload = (formData, user) => {
     created_at: Date.now(),
     updated_at: Date.now()
   }
+
+  delete formattedPayload?.id
   return formattedPayload
 }
 
@@ -14,6 +16,6 @@ export const formatPutPayload = (formData, user) => {
     updated_at: Date.now()
   }
 
-  delete formatPostPayload?.id
+  delete formattedPayload?.id
   return formattedPayload
 }

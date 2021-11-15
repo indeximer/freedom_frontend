@@ -30,6 +30,14 @@ export function useSkillsService() {
         } catch (error) {
           alert(error)
         }
+      },
+      deleteSkill: async (id, payload) => {
+        try {
+          const response = await client.delete(`${URL}/${id}`)
+          return response
+        } catch (error) {
+          alert(error)
+        }
       }
     }
   }, [client])

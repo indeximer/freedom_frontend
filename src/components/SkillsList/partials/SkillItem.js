@@ -40,7 +40,12 @@ export function SkillItem({ skill }) {
           </CardContent>
         </Collapse>
         <CardActions>
-          <Button startIcon={<DeleteIcon />} color="secondary" size="small">
+          <Button
+            startIcon={<DeleteIcon />}
+            color="secondary"
+            size="small"
+            onClick={skill.onDelete}
+          >
             Excluir
           </Button>
           <Button
