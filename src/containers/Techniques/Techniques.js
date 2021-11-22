@@ -5,7 +5,8 @@ import { useNavigation } from '@/hooks'
 import { useStore } from '@/contexts/Store'
 import { useTechniquesService } from '@/services/techniques'
 import { useLoader } from '@/contexts/Loader'
-import { FixedAddButton } from '@/components'
+import { useSearch } from '@/contexts/Search'
+import { FixedAddButton, SearchBar } from '@/components'
 import { orderBy } from '@/utils'
 
 export function TechniquesContainer() {
@@ -14,6 +15,7 @@ export function TechniquesContainer() {
   const { store, loadStore } = useStore()
   const { deleteTechnique } = useTechniquesService()
   const { navigateTo } = useNavigation()
+  const { showSearch, closeSearch } = useSearch()
   const { openLoader, closeLoader } = useLoader()
   const techniques = store?.techniques || []
 
@@ -47,6 +49,7 @@ export function TechniquesContainer() {
 
   return (
     <>
+      <SearchBar open={showSearch} onClose={closeSearch} />
       <TechniquesList techniques={sortedTechniques} />
       <FixedAddButton onClick={() => navigateTo('/techniques/create')} />
       <ConfirmationModal

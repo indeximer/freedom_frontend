@@ -15,6 +15,7 @@ export function Header({
   pageTitle,
   showFilterBtn = false,
   showSearchBtn = false,
+  openSearch = () => false,
   backBtnPath = false
 }) {
   const [openMenu, setOpenMenu] = useState(false)
@@ -36,6 +37,14 @@ export function Header({
     ) : null
   }
 
+  const SearchButton = () => {
+    return showSearchBtn ? (
+      <IconButton edge="end" color="inherit" onClick={openSearch}>
+        <SearchIcon />
+      </IconButton>
+    ) : null
+  }
+
   return (
     <>
       <AppBar>
@@ -50,11 +59,7 @@ export function Header({
               <FilterListIcon />
             </IconButton>
           )}
-          {showSearchBtn && (
-            <IconButton edge="end" color="inherit">
-              <SearchIcon />
-            </IconButton>
-          )}
+          <SearchButton />
           <BackButton />
         </Toolbar>
       </AppBar>

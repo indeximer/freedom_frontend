@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react'
 import { useStore } from '@/contexts/Store'
+import { useSearch } from '@/contexts/Search'
 import { SkillsList } from '@/components/SkillsList'
-import { FixedAddButton, SkillForm } from '@/components'
+import { FixedAddButton, SkillForm, SearchBar } from '@/components'
 import { useFormSubmit } from './hooks/useFormSubmit'
 import { ConfirmationModal } from '@/components/ConfirmationModal'
 import { orderBy } from '@/utils'
@@ -11,6 +12,8 @@ export function SkillsContainer() {
   const [openConfirmModal, setConfirmOpenModal] = useState(false)
   const [selectedSkill, setSelectedSkill] = useState(false)
   const { store } = useStore()
+  const { showSearch, closeSearch } = useSearch()
+
   const { submitSkill, handleDeleteSkill } = useFormSubmit(setOpenModal)
 
   const handleEditClick = useCallback(
@@ -46,6 +49,7 @@ export function SkillsContainer() {
 
   return (
     <>
+      <SearchBar open={showSearch} onClose={closeSearch} />
       <SkillsList skills={sortedSkills} />
       <FixedAddButton onClick={handleCreateClick} />
       <SkillForm

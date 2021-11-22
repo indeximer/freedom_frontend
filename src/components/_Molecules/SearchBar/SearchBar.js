@@ -5,11 +5,11 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import MicIcon from '@material-ui/icons/Mic'
 import { SearchCard } from './styles'
 
-export function SearchBar({ open = false }) {
+export function SearchBar({ open = false, onClose }) {
   const CloseBtn = () => {
     return (
       <InputAdornment position="start">
-        <IconButton>
+        <IconButton onClick={onClose}>
           <ArrowBackIcon />
         </IconButton>
       </InputAdornment>
