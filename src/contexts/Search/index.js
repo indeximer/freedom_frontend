@@ -1,2 +1,2 @@
 export * from './SearchProvider'
-export { useSearch } from './SearchContext'
+export { useSearchContext } from './SearchContext'

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Header } from '@/components/Header'
 import { SkillsContainer } from '@/containers/Skills'
-import { SearchProvider, useSearch } from '@/contexts/Search'
+import { SearchProvider, useSearchContext } from '@/contexts/Search'
 import { Container } from '@/components/Container'
 
 function SearchConsumer() {
-  const { openSearch } = useSearch()
+  const { openSearch } = useSearchContext()
 
   return (
     <Container>

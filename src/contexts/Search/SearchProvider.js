@@ -13,7 +13,13 @@ export function SearchProvider({ children }) {
   }, [setShowSearch])
 
   return (
-    <SearchContext.Provider value={{ showSearch, openSearch, closeSearch }}>
+    <SearchContext.Provider
+      value={{
+        showSearch,
+        openSearch,
+        closeSearch
+      }}
+    >
       {children}
     </SearchContext.Provider>
   )
