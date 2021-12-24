@@ -6,8 +6,9 @@ export function useSearchFilter(collection) {
 
   const mapSearchParams = (param, collection, query) =>
     collection.filter(item => {
-      const regex = RegExp(`/${query.toLowerCase()}/`)
-      return regex.test(item?.[`${param}`].toLowerCase())
+      const regex = RegExp(`${query.toLowerCase()}`)
+      if (item?.[`${param}`].toLowerCase().match(regex)) return item
+      return null
     })
 
   const paramsToArray = searchParams =>
@@ -21,8 +22,9 @@ export function useSearchFilter(collection) {
       const searchResults = searchParamsArray.map(param =>
         mapSearchParams(param, collection, searchQuery)
       )
+
       setQuery(searchQuery)
-      setResults(searchResults)
+      setResults(...searchResults)
     },
     [setResults, collection, setQuery]
   )
