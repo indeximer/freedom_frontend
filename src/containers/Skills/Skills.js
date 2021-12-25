@@ -5,16 +5,16 @@ import { SkillsList } from '@/components/SkillsList'
 import { FixedAddButton, SkillForm, SearchBar } from '@/components'
 import { useFormSubmit } from './hooks/useFormSubmit'
 import { ConfirmationModal } from '@/components/ConfirmationModal'
-import { orderBy, get } from '@/utils'
 import { useSearchFilter } from '@/hooks'
+import { orderBy, get } from '@/utils'
 
 export function SkillsContainer() {
   const [openModal, setOpenModal] = useState(false)
   const [openConfirmModal, setConfirmOpenModal] = useState(false)
   const [selectedSkill, setSelectedSkill] = useState(false)
   const { store } = useStore()
-  const { showSearch, closeSearch } = useSearchContext(get(store, 'skills', []))
-  const { results, searchItems } = useSearchFilter(store?.skills)
+  const { showSearch, closeSearch } = useSearchContext()
+  const { results, searchItems } = useSearchFilter(get(store, 'skills', []))
   const { submitSkill, handleDeleteSkill } = useFormSubmit(setOpenModal)
 
   const handleEditClick = useCallback(

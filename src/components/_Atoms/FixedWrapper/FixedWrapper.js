@@ -1,7 +1,7 @@
 import React from 'react'
 import { FixedStyle } from './styles'
 
-export function FixedWrapper({ children, position }) {
+export function FixedWrapper({ children, position, width = false }) {
   const positionToString = position => {
     return Object.keys(position).reduce(
       (acc, key) => `${acc}${key}:${position[`${key}`]};`,
@@ -10,6 +10,8 @@ export function FixedWrapper({ children, position }) {
   }
 
   return (
-    <FixedStyle position={positionToString(position)}>{children}</FixedStyle>
+    <FixedStyle position={positionToString(position)} width={width}>
+      {children}
+    </FixedStyle>
   )
 }

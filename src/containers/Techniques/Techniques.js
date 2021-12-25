@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from 'react'
 import { TechniquesList } from '@/components/TechniquesList'
 import { ConfirmationModal } from '@/components/ConfirmationModal'
-import { useNavigation } from '@/hooks'
 import { useStore } from '@/contexts/Store'
 import { useTechniquesService } from '@/services/techniques'
 import { useLoader } from '@/contexts/Loader'
-import { useSearch } from '@/contexts/Search'
+import { useSearchContext } from '@/contexts/Search'
 import { FixedAddButton, SearchBar } from '@/components'
-import { orderBy } from '@/utils'
+import { useSearchFilter, useNavigation } from '@/hooks'
+import { orderBy, get } from '@/utils'
 
 export function TechniquesContainer() {
   const [openModal, setOpenModal] = useState(false)
@@ -15,9 +15,11 @@ export function TechniquesContainer() {
   const { store, loadStore } = useStore()
   const { deleteTechnique } = useTechniquesService()
   const { navigateTo } = useNavigation()
-  const { showSearch, closeSearch } = useSearch()
+  const { showSearch, closeSearch } = useSearchContext(
+    get(store, 'techniques', [])
+  )
+  const { results, searchItems } = useSearchFilter(get(store, 'techniques', []))
   const { openLoader, closeLoader } = useLoader()
-  const techniques = store?.techniques || []
 
   const handleDeleteTechnique = useCallback(async () => {
     openLoader()
@@ -39,7 +41,7 @@ export function TechniquesContainer() {
     setOpenModal(true)
   }
 
-  const sortedTechniques = techniques
+  const sortedTechniques = results
     .sort((a, b) => orderBy(a, b, 'updated_at'))
     .reverse()
     .map(item => ({
@@ -49,7 +51,12 @@ export function TechniquesContainer() {
 
   return (
     <>
-      <SearchBar open={showSearch} onClose={closeSearch} />
+      <SearchBar
+        open={showSearch}
+        onClose={closeSearch}
+        searchParams="name|related_skill|difficulty"
+        onChange={searchItems}
+      />
       <TechniquesList techniques={sortedTechniques} />
       <FixedAddButton onClick={() => navigateTo('/techniques/create')} />
       <ConfirmationModal

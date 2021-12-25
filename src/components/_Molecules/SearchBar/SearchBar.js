@@ -4,13 +4,24 @@ import { FixedWrapper } from '@/components'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import MicIcon from '@material-ui/icons/Mic'
 import { SearchCard } from './styles'
+import useSpeechToText from 'react-hook-speech-to-text'
 
 export function SearchBar({ open = false, onClose, searchParams, onChange }) {
   const [query, setQuery] = useState('')
+  const {
+    interimResult,
+    isRecording,
+    startSpeechToText,
+    stopSpeechToText
+  } = useSpeechToText({
+    continuous: true,
+    useLegacyResults: false
+  })
+
   const handleChange = useCallback(
-    e => {
-      setQuery(e.target.value)
-      onChange(searchParams, e.target.value)
+    value => {
+      setQuery(value)
+      onChange(searchParams, value)
     },
     [setQuery, onChange, searchParams]
   )
@@ -20,6 +31,19 @@ export function SearchBar({ open = false, onClose, searchParams, onChange }) {
     onChange(searchParams, '')
     setQuery('')
   }, [onClose, setQuery, onChange, searchParams])
+
+  const handleRecord = useCallback(() => {
+    if (!isRecording) return startSpeechToText()
+
+    stopSpeechToText()
+    handleChange(interimResult)
+  }, [
+    stopSpeechToText,
+    startSpeechToText,
+    isRecording,
+    interimResult,
+    handleChange
+  ])
 
   const CloseBtn = () => {
     return (
@@ -34,7 +58,10 @@ export function SearchBar({ open = false, onClose, searchParams, onChange }) {
   const SttBtn = () => {
     return (
       <InputAdornment position="end">
-        <IconButton>
+        <IconButton
+          onClick={handleRecord}
+          color={isRecording ? 'secondary' : ''}
+        >
           <MicIcon />
         </IconButton>
       </InputAdornment>
@@ -43,8 +70,8 @@ export function SearchBar({ open = false, onClose, searchParams, onChange }) {
 
   return (
     open && (
-      <FixedWrapper position={{ top: 0, left: 0 }}>
-        <SearchCard elevation={3}>
+      <FixedWrapper position={{ top: 0, left: 0 }} width="100%">
+        <SearchCard elevation={3} square>
           <TextField
             value={query}
             placeholder="Buscar"
@@ -52,7 +79,8 @@ export function SearchBar({ open = false, onClose, searchParams, onChange }) {
               startAdornment: <CloseBtn />,
               endAdornment: <SttBtn />
             }}
-            onChange={handleChange}
+            onChange={e => handleChange(e.target.value)}
+            autoFocus
           />
         </SearchCard>
       </FixedWrapper>
