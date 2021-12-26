@@ -9,12 +9,12 @@ import useSpeechToText from 'react-hook-speech-to-text'
 export function SearchBar({ open = false, onClose, searchParams, onChange }) {
   const [query, setQuery] = useState('')
   const {
-    interimResult,
     isRecording,
+    results,
     startSpeechToText,
     stopSpeechToText
   } = useSpeechToText({
-    continuous: true,
+    continuous: false,
     useLegacyResults: false
   })
 
@@ -33,17 +33,14 @@ export function SearchBar({ open = false, onClose, searchParams, onChange }) {
   }, [onClose, setQuery, onChange, searchParams])
 
   const handleRecord = useCallback(() => {
-    if (!isRecording) return startSpeechToText()
-
-    stopSpeechToText()
-    handleChange(interimResult)
-  }, [
-    stopSpeechToText,
-    startSpeechToText,
-    isRecording,
-    interimResult,
-    handleChange
-  ])
+    if (!isRecording) {
+      startSpeechToText()
+    } else {
+      stopSpeechToText()
+      const [currentSpeech] = results.slice(-1)
+      handleChange(currentSpeech?.transcript)
+    }
+  }, [stopSpeechToText, startSpeechToText, isRecording, results, handleChange])
 
   const CloseBtn = () => {
     return (
