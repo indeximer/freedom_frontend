@@ -20,7 +20,7 @@ export function SearchBar({ open = false, onClose, searchParams, onChange }) {
 
   const handleChange = useCallback(
     value => {
-      setQuery(value)
+      setQuery(value || '')
       onChange(searchParams, value)
     },
     [setQuery, onChange, searchParams]
@@ -60,7 +60,7 @@ export function SearchBar({ open = false, onClose, searchParams, onChange }) {
       <InputAdornment position="end">
         <IconButton
           onClick={handleRecord}
-          color={isRecording ? 'secondary' : ''}
+          color={isRecording ? 'secondary' : 'default'}
         >
           <MicIcon />
         </IconButton>

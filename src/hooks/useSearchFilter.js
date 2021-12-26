@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { deduplicateArray } from '@/utils'
 
 export function useSearchFilter(collection) {
   const [results, setResults] = useState(collection)
@@ -19,12 +20,13 @@ export function useSearchFilter(collection) {
       if (!searchQuery || searchQuery === '') return setResults(collection)
 
       const searchParamsArray = paramsToArray(searchParams)
-      const searchResults = searchParamsArray.map(param =>
+      const searchResultsCollection = searchParamsArray.map(param =>
         mapSearchParams(param, collection, searchQuery)
       )
+      const searchResults = [].concat(...searchResultsCollection)
 
       setQuery(searchQuery)
-      setResults(...searchResults)
+      setResults(deduplicateArray(searchResults))
     },
     [setResults, collection, setQuery]
   )
