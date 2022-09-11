@@ -23,6 +23,12 @@ export function MenuList() {
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
+        <ListItem onClick={() => navigateTo('/characters')}>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Personagens" />
+        </ListItem>
         <ListItem onClick={() => navigateTo('/skills')}>
           <ListItemIcon>
             <InboxIcon />
