@@ -10,7 +10,7 @@ function SearchConsumer() {
   return (
     <Container>
       <Header
-        pageTitle="Habilidades"
+        pageTitle="Personagens"
         showSearchBtn={true}
         openSearch={openSearch}
       />
