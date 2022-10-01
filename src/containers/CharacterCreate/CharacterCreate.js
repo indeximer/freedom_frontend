@@ -14,6 +14,13 @@ import { Footer } from '@/components/Footer'
 
 const steps = ['Perfil', 'Habilidades', 'Poderes', 'Toques Finais']
 
+const stepContent = {
+  0: <CharacterCreateProfile />,
+  1: <div>Paso 2</div>,
+  2: <div>Paso 3</div>,
+  3: <div>Paso 4</div>
+}
+
 export function CharacterCreateContainer() {
   const [activeStep, setActiveStep] = useState(0)
 
@@ -36,7 +43,7 @@ export function CharacterCreateContainer() {
           ))}
         </Stepper>
       </Grid>
-      <CharacterCreateProfile />
+      {stepContent[`${activeStep}`]}
       <Footer>
         <Grid item xs={3}>
           <Button
